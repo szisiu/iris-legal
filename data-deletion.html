@@ -28,8 +28,8 @@ i wiadomościach, kolejkę wiadomości do wysłania i historię wywołań Meta;<
 </ul>
 <p>Zostają: kontakty, rozmowy, zapisy zgód, blokady adresów, kampanie i szablony oraz konto
 IRIS. Wpis o odłączeniu zostaje w dzienniku zdarzeń przez 24 miesiące. Resztki techniczne
-(liczniki limitów i znacznik usuniętego konta) IRIS usuwa do 90 dni po tym, jak Meta
-potwierdzi wyłączenie powiadomień.</p>
+IRIS usuwa tak: liczniki limitów do 90 dni po odłączeniu, a znacznik usuniętego konta do
+90 dni po tym, jak Meta potwierdzi wyłączenie powiadomień.</p>
 <p>Gdy Meta nie odpowiada albo IRIS wyczerpał własny limit wywołań, odłączenie i tak
 następuje od razu, a wyłączenie powiadomień u Meta IRIS wysyła później. Do tego czasu
 zadanie w kolejce przechowuje identyfikator konta i zaszyfrowany token, a Meta może nadal
@@ -156,8 +156,9 @@ comments and messages, the queue of messages to send and the history of calls to
 </ul>
 <p>These stay: contacts, conversations, consent records, address blocks, campaigns and
 templates, and the IRIS account. The entry about the disconnection stays in the event log
-for 24 months. IRIS deletes the technical remains (limit counters and the mark of the
-removed account) within 90 days after Meta confirms that the notifications are off.</p>
+for 24 months. IRIS deletes the technical remains as follows: the limit counters within 90
+days after the disconnection, and the mark of the removed account within 90 days after Meta
+confirms that the notifications are off.</p>
 <p>When Meta does not answer, or IRIS has used up its own call limit, the disconnection
 still happens at once, and IRIS sends the request to switch off the notifications later.
 Until then a queued job holds the account identifier and the encrypted token, and Meta can
