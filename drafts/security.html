@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bezpieczeństwo i ochrona danych: IRIS</title><link rel="stylesheet" href="../style.css"></head>
+<body><main>
+<p><strong>Projekt do przeglądu prawnego. Nie publikować.</strong></p>
+<h1>Bezpieczeństwo i ochrona danych</h1>
+<p class="meta">IRIS &middot; Wersja 3 &middot; projekt z 9 listopada 2026</p>
+<p><a href="#en" lang="en">English version below</a>. Polski tekst jest wiążący.</p>
+<p>Ta strona mówi prostym językiem, jak IRIS chroni dane. Nie zastępuje
+<a href="privacy.html">Polityki prywatności</a> ani
+<a href="dpa.html">umowy powierzenia</a>. Opisuje stan z dnia publikacji.</p>
+
+<h2>1. Gdzie są dane</h2>
+<ul>
+<li>Aplikacja i baza danych działają na serwerze OVHcloud we Francji, w Unii Europejskiej.</li>
+<li>Aplikacja nie wystawia żadnego portu do internetu. Ruch z sieci trafia do niej tylko
+przez tunel Cloudflare.</li>
+<li>E-maile wysyła Resend, a płatności obsługuje Stripe. Pełną listę dostawców, ich role
+i kraje podaje <a href="subprocessors.html">lista podmiotów przetwarzających</a>.</li>
+</ul>
+
+<h2>2. Co szyfrujemy</h2>
+<ul>
+<li><strong>Połączenie.</strong> Każde połączenie z IRIS używa HTTPS, z TLS w wersji
+co najmniej 1.2. Połączenia bez szyfrowania są przekierowywane na HTTPS.</li>
+<li><strong>Token dostępu do Instagrama.</strong> IRIS zapisuje go zaszyfrowany
+(AES-256-GCM). Klucz nie leży w bazie danych, więc sama kopia bazy nie daje dostępu do
+konta na Instagramie.</li>
+<li><strong>Logowanie.</strong> IRIS nie ma haseł. Logujesz się jednorazowym linkiem
+wysłanym na Twój adres e-mail. Baza przechowuje tylko skrót każdego linku i każdej sesji. Gdy
+e-mail z linkiem czeka na wysyłkę, i najwyżej 7 dni potem, kolejka zadań trzyma link
+zaszyfrowany kluczem, którego nie ma w bazie.</li>
+<li><strong>Karty płatnicze.</strong> Dane karty podajesz na stronie Stripe. IRIS nie
+widzi i nie zapisuje pełnego numeru karty.</li>
+</ul>
+
+<h2>3. Kto ma dostęp do danych</h2>
+<ul>
+<li>Każdy klient widzi tylko dane własnego konta.</li>
+<li>Dostęp administracyjny ma tylko Operator. Panel Operatora stoi za osobnym logowaniem
+Cloudflare Access. Z serwerem Operator łączy się przez sieć prywatną.</li>
+<li>IRIS zapisuje to, co Operator robi w panelu Operatora i poleceniami Operatora,
+i przechowuje ten zapis 24 miesiące.</li>
+</ul>
+
+<h2>4. Czego IRIS nie robi</h2>
+<ul>
+<li>Nie sprzedaje danych i nie udostępnia ich do reklam.</li>
+<li>Nie wysyła własnych wiadomości marketingowych do subskrybentów klienta.</li>
+<li>Nie importuje list adresów. Wysyłka trafia tylko do osoby, która sama podała adres
+i potwierdziła zapis linkiem z e-maila.</li>
+<li>Nie prosi o hasło do Instagrama. Połączenie odbywa się przez oficjalne logowanie Meta,
+a klient może je cofnąć w każdej chwili.</li>
+<li>Instagram przysyła do IRIS wszystkie prywatne wiadomości połączonego konta. IRIS
+działa tylko na wiadomościach w rozmowach, które zaczęła kampania. Surowy zapis każdej
+otrzymanej wiadomości przechowuje najwyżej 90 dni, potem go usuwa.</li>
+</ul>
+
+<h2>5. Co zostaje po stronie twórcy</h2>
+<ul>
+<li>Lista subskrybentów należy do twórcy. Twórca jest administratorem danych swoich
+odbiorców, a IRIS przetwarza je w jego imieniu, na podstawie
+<a href="dpa.html">umowy powierzenia</a>.</li>
+<li>Twórca odpowiada za treść wiadomości i za własną informację o prywatności. Wzór
+podaje <a href="end-user-notice.html">szablon informacji dla odbiorców</a>.</li>
+<li>Jak usunąć dane, mówi strona <a href="../data-deletion.html">Usuwanie danych</a>.</li>
+</ul>
+
+<h2>6. Zasady Instagrama</h2>
+<ul>
+<li>IRIS używa wyłącznie oficjalnego API Instagrama i uprawnień, które Meta zatwierdza.</li>
+<li>Wiadomość prywatną dostaje tylko osoba, która sama napisała komentarz pod postem
+klienta. IRIS nie pisze do osób, które się nie odezwały.</li>
+<li>IRIS trzyma każde konto poniżej limitów Meta własnymi, niższymi limitami. Sam
+wstrzymuje wysyłkę, gdy Meta zgłasza limit albo błąd.</li>
+</ul>
+
+<h2>7. Czego jeszcze nie mamy</h2>
+<ul>
+<li>IRIS nie ma certyfikatu ISO 27001 ani raportu SOC 2.</li>
+<li>IRIS nie tworzy dziś kopii zapasowych bazy danych. Gdy kopie powstaną, ta strona poda,
+gdzie są i jak długo.</li>
+</ul>
+
+<h2>8. Zgłoszenie błędu bezpieczeństwa</h2>
+<p>Napisz na security@irisapp.pl. Opisz, co widzisz i jak to powtórzyć. Odpowiadamy
+zwykle w ciągu 2 dni roboczych. Prosimy, aby nie ujawniać błędu publicznie, zanim go
+naprawimy, i nie sięgać po dane innych osób.</p>
+
+<hr>
+
+<div lang="en">
+<h1 id="en" lang="en">Security and data protection</h1>
+<p class="meta">IRIS &middot; Version 3 &middot; draft of 9 November 2026</p>
+<p>This is a translation. The Polish text governs.</p>
+<p>This page says in plain language how IRIS protects data. It does not replace the
+<a href="privacy-en.html">Privacy Policy</a> or the
+<a href="dpa-en.html">processing agreement</a>. It describes the state on the day of
+publication.</p>
+
+<h2>1. Where the data is</h2>
+<ul>
+<li>The application and the database run on an OVHcloud server in France, in the European
+Union.</li>
+<li>The application publishes no port to the internet. Web traffic reaches it only through
+a Cloudflare tunnel.</li>
+<li>Resend sends the e-mail, and Stripe handles payments. The
+<a href="subprocessors.html">sub-processor list</a> gives all providers, their roles and
+countries.</li>
+</ul>
+
+<h2>2. What we encrypt</h2>
+<ul>
+<li><strong>The connection.</strong> Each connection to IRIS uses HTTPS, with TLS 1.2 or
+newer. A connection without encryption is redirected to HTTPS.</li>
+<li><strong>The Instagram access token.</strong> IRIS stores it encrypted (AES-256-GCM).
+The key is not in the database, so a copy of the database alone gives no access to the
+Instagram account.</li>
+<li><strong>Sign-in.</strong> IRIS has no passwords. You sign in with a one-time link
+sent to your e-mail address. The database stores only a hash of each link and each
+session. While a sign-in e-mail waits to be sent, and for at most 7 days after, the job queue
+keeps the link encrypted with a key that is not in the database.</li>
+<li><strong>Payment cards.</strong> You give card data on a Stripe page. IRIS does not
+see or store the full card number.</li>
+</ul>
+
+<h2>3. Who can access the data</h2>
+<ul>
+<li>Each customer sees only the data of their own account.</li>
+<li>Only the Operator has administrative access. The Operator's panel is behind a separate
+Cloudflare Access sign-in. The Operator connects to the server over a private network.</li>
+<li>IRIS records what the Operator does in the Operator's panel and with the Operator's
+commands, and keeps the record for 24 months.</li>
+</ul>
+
+<h2>4. What IRIS does not do</h2>
+<ul>
+<li>It does not sell data or share it for advertising.</li>
+<li>It does not send its own marketing messages to a customer's subscribers.</li>
+<li>It does not import address lists. A broadcast goes only to a person who gave the address
+and confirmed the sign-up with the link in the e-mail.</li>
+<li>It does not ask for the Instagram password. The connection uses Meta's official
+sign-in, and the customer can withdraw it at any time.</li>
+<li>Instagram sends IRIS all private messages of the connected account. IRIS acts only on
+messages in conversations that a campaign started. It keeps the raw record of each received
+message for at most 90 days, then deletes it.</li>
+</ul>
+
+<h2>5. What stays with the creator</h2>
+<ul>
+<li>The subscriber list belongs to the creator. The creator is the controller of the
+recipients' data, and IRIS processes it on the creator's behalf under the
+<a href="dpa-en.html">processing agreement</a>.</li>
+<li>The creator is responsible for the content of messages and for their own privacy
+notice. The <a href="end-user-notice.html#en">notice template for recipients</a> gives
+a model.</li>
+<li>The <a href="../data-deletion.html#en">Data deletion</a> page says how to delete data.</li>
+</ul>
+
+<h2>6. Instagram rules</h2>
+<ul>
+<li>IRIS uses only the official Instagram API and the permissions that Meta approves.</li>
+<li>Only a person who wrote a comment on the customer's post gets a private message. IRIS
+does not write to people who did not write first.</li>
+<li>IRIS keeps each account below Meta's limits with its own lower limits. It stops sending
+by itself when Meta reports a limit or an error.</li>
+</ul>
+
+<h2>7. What we do not have yet</h2>
+<ul>
+<li>IRIS has no ISO 27001 certificate and no SOC 2 report.</li>
+<li>IRIS makes no backups of the database today. When backups exist, this page will say
+where they are and for how long.</li>
+</ul>
+
+<h2>8. Reporting a security problem</h2>
+<p>Write to security@irisapp.pl. Describe what you see and how to repeat it. We usually
+answer in 2 working days. Please do not make the problem public before we repair it, and
+do not access other people's data.</p>
+</div>
+</main></body></html>

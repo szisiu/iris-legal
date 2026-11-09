@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Podwykonawcy: IRIS</title><link rel="stylesheet" href="../style.css"></head>
+<body><main>
+<p><strong>Projekt do przeglądu prawnego. Nie publikować.</strong></p>
+<h1>Podwykonawcy</h1>
+<p class="meta">IRIS &middot; Wersja 3 &middot; projekt z 8 listopada 2026</p>
+
+<p><strong>Projekt do weryfikacji prawnej.</strong> Przed publikacją należy rozstrzygnąć miejsca
+oznaczone [DO UZUPEŁNIENIA] i [DO SPRAWDZENIA]. <span lang="en"><a href="#en">English version
+below.</a></span></p>
+
+<p>Lista dalszych podmiotów przetwarzających (Podwykonawców), o której mowa w § 7
+<a href="dpa.html">Umowy powierzenia przetwarzania danych osobowych</a>.</p>
+
+<h2>Podwykonawcy w użyciu</h2>
+<p>Wiersze opisują zakres powierzonych danych. Ten sam dostawca może również przetwarzać
+własne dane klienta lub operatora IRIS, objęte Polityką prywatności.</p>
+<div class="table-wrap"><table>
+<tr><th>Podmiot</th><th>Cel</th><th>Dane</th><th>Lokalizacja</th><th>Przekazanie poza EOG</th></tr>
+<tr><td>Resend: Plus Five Five, Inc., San Francisco, USA</td>
+<td>Wysyłanie wiadomości e-mail i zdarzenia doręczenia</td>
+<td>Adres odbiorcy, treść i temat wiadomości, zdarzenia doręczenia</td>
+<td>Wysyłka z regionu AWS eu-west-1 (Irlandia). Dane konta, metadane wiadomości, logi i rekordy API: USA. Treść i metadane wiadomości Resend przechowuje 30 dni</td>
+<td>Tak, do USA. Standardowe klauzule umowne (decyzja Komisji (UE) 2021/914), moduł trzeci, w umowie powierzenia Resend; Resend deklaruje w niej także udział w EU-U.S. Data Privacy Framework</td></tr>
+<tr><td>Dalsi podwykonawcy Resend, w tym Amazon Web Services, Inc. (USA)</td>
+<td>Infrastruktura i usługi, z których korzysta Resend; IRIS nie zawiera z nimi umów</td>
+<td>Dane przekazywane Resend, w zakresie obsługi jego usług</td>
+<td>USA; wysyłka przez AWS eu-west-1 (Irlandia). Pełna lista: <a href="https://resend.com/legal/subprocessors" lang="en">resend.com/legal/subprocessors</a></td>
+<td>Tak, w łańcuchu Resend. Resend zawiera z każdym podwykonawcą umowę z porównywalnymi obowiązkami ochrony danych, odpowiada za niego i informuje o zmianach z 14-dniowym wyprzedzeniem</td></tr>
+<tr><td>Cloudflare, Inc., San Francisco, USA</td>
+<td>Proxy, zakończenie TLS, DNS, Cloudflare Tunnel, cache publicznych obrazów; Cloudflare Access chroni dostęp operatorski</td>
+<td>Ruch HTTP, w tym adresy e-mail z formularzy, treści stron i wiadomości przesyłane przez Serwis, webhooki, adresy IP, pełne ścieżki URL i ciasteczka w tranzycie; obrazy w cache. Access obsługuje tożsamość operatora i jednorazowy PIN</td>
+<td>Sieć globalna centrów danych Cloudflare, także poza EOG. IRIS nie korzysta z ograniczenia przetwarzania do UE. Obrazy w cache do roku, zgodnie z nagłówkiem cache</td>
+<td>Tak. Umowa powierzenia Cloudflare jest częścią umowy z Cloudflare (Self-Serve Subscription Agreement, pkt 6.1). Standardowe klauzule umowne, moduł trzeci; Cloudflare deklaruje w umowie także udział w EU-U.S. Data Privacy Framework</td></tr>
+<tr><td>OVH Sp. z o.o., Wrocław, Polska (grupa OVHcloud): skrzynka MX Plan</td>
+<td>Utrzymanie skrzynki operatora i przekierowań poczty, w tym poleceń Administratora, żądań osób i zgłoszeń nadużyć</td>
+<td>Adres nadawcy i odbiorcy, treść, załączniki i metadane korespondencji, w tym Dane przekazane w zgłoszeniu</td>
+<td>Francja, centra danych OVHcloud. Spółki grupy OVHcloud mogą mieć dostęp zdalny, w tym z Kanady i Wielkiej Brytanii</td>
+<td>Przechowywanie w EOG. Dostęp zdalny z Kanady i Wielkiej Brytanii: decyzje Komisji stwierdzające odpowiedni stopień ochrony (art. 45 RODO). Dostęp z innych państw: standardowe klauzule umowne w grupie OVHcloud (umowa powierzenia OVHcloud, pkt 6.4)</td></tr>
+<tr><td>OVH Sp. z o.o., Wrocław, Polska (grupa OVHcloud): serwer VPS</td>
+<td>Utrzymanie aplikacji i bazy PostgreSQL; Cloudflare pozostaje przed serwerem</td>
+<td>Wszystkie Dane z Załącznika 1 przechowywane w aplikacji, bazie, plikach eksportu i logach</td>
+<td>OVHcloud, VPS, Francja (EOG). Spółki grupy OVHcloud mogą mieć dostęp zdalny, w tym z Kanady i Wielkiej Brytanii</td>
+<td>Przechowywanie w EOG. Dostęp zdalny: jak dla skrzynki MX Plan</td></tr>
+</table></div>
+
+<h2>Podwykonawcy planowani</h2>
+<p>Obecnie nie ma planowanych Podwykonawców. Przed dodaniem nowego stosuje się procedurę
+powiadomienia opisaną niżej.</p>
+<p>IRIS działa na serwerze VPS OVHcloud, a nie na własnym sprzęcie operatora. Cloudflare
+Email Routing nie jest używany; pocztę przychodzącą obsługuje skrzynka OVHcloud.</p>
+
+<h2>Inni odbiorcy</h2>
+<p><strong>Stripe Payments Europe, Limited</strong> (Dublin, Irlandia) jest stroną umowy
+z IRIS, ponieważ konto Stripe operatora jest w Polsce. Według umowy powierzenia Stripe działa
+częściowo jako podmiot przetwarzający, a częściowo jako odrębny administrator, na przykład
+przy zapobieganiu oszustwom i obowiązkach przeciwdziałania praniu pieniędzy. Stripe przekazuje
+dane do Stripe, LLC w USA na podstawie swojego aneksu o przekazywaniu danych (Data Transfers
+Addendum), który wskazuje EU-U.S. Data Privacy Framework i standardowe klauzule umowne.
+Stripe obsługuje subskrypcje, zakupy dodatkowych bloków, Checkout, portal
+rozliczeń i zwroty. IRIS przekazuje adres e-mail klienta, NIP oraz identyfikator konta IRIS;
+Checkout zbiera dane płatnicze i rozliczeniowe klienta, w tym nazwę i adres. Przekazywane są
+też identyfikatory cen i klienta, adresy powrotu, identyfikator bloku, początek okresu i liczba
+kontaktów objętych kupowanym blokiem. Liczba jest parametrem zakupu; kod nie przekazuje
+Stripe danych poszczególnych komentujących ani subskrybentów.</p>
+<p>Operator IRIS jest administratorem tych danych klienta. Dlatego Stripe pozostaje innym
+odbiorcą danych rozliczeniowych, a nie Podwykonawcą Danych powierzonych na podstawie Umowy.
+Nie przesądza to roli Stripe jako administratora lub podmiotu przetwarzającego przy każdej
+operacji. Zasady przetwarzania własnych danych klienta opisuje
+<a href="privacy.html" lang="en">Polityka prywatności</a>. Dla pierwszych klientów właściciel
+wystawia każdą fakturę VAT ręcznie na podstawie płatności Stripe; dokument płatności Stripe
+nie jest tu obietnicą automatycznej polskiej faktury VAT.</p>
+
+<h2>Meta jako odrębny administrator</h2>
+<p><strong>Meta Platforms Ireland Ltd.</strong> nie jest Podwykonawcą. W odniesieniu do
+danych na swojej platformie działa jako odrębny administrator na podstawie własnych warunków
+(Meta Platform Terms). IRIS wymienia z Meta dane na polecenie klienta: odbiera komentarze
+i wiadomości oraz wysyła odpowiedzi za pośrednictwem połączonego konta Instagram. Meta jest
+wymieniona tutaj dla przejrzystości.</p>
+
+<h2>Czego IRIS nie używa</h2>
+<p>IRIS nie korzysta z zewnętrznej analityki, śledzenia błędów ani zewnętrznego gromadzenia
+logów aplikacji. Korzysta z Cloudflare, w tym cache publicznych obrazów; dostawcy mogą
+prowadzić własne logi. GitHub Pages obsługuje publiczne strony prawne, a nie zbiory Danych
+powierzonych; odwiedziny tych stron należą do zakresu Polityki prywatności. Tailscale służy
+administracji hostem, a dokumentacja wdrożenia nie wskazuje przesyłania przez niego danych klientów.</p>
+
+<h2>Zmiany listy</h2>
+<ol>
+<li>O zamiarze dodania lub zastąpienia Podwykonawcy, także planowanego, operator IRIS
+informuje klienta co najmniej 14 dni przed rozpoczęciem przez niego przetwarzania danych:
+wiadomością na adres e-mail przypisany do konta i aktualizacją tej strony.</li>
+<li>W terminie 14 dni klient może zgłosić sprzeciw. Jeżeli sprawy nie uda się rozwiązać,
+klient może rozwiązać umowę, usuwając konto; przed usunięciem Serwis przygotowuje
+eksport dostępny przez 24 godziny. Obejmuje on kontakty, zgody, blokady wysyłki, audyt,
+kampanie, szablony e-mail, wysyłki zbiorcze, dane marki i rozliczenia, z ograniczeniami
+wskazanymi w § 12 ust. 1 Umowy.</li>
+</ol>
+
+<p>Ostatnia aktualizacja projektu: 8 listopada 2026.</p>
+
+<section lang="en" id="en">
+<p><strong>Draft for legal review. Do not publish.</strong></p>
+<h1>Sub-processors</h1>
+<p class="meta">IRIS &middot; Version 3 &middot; draft of 8 November 2026</p>
+
+<p><strong>Draft for legal review.</strong> Slots marked [TO BE COMPLETED] and [TO BE VERIFIED] must be
+resolved before publication. This is a translation; the Polish text above governs.</p>
+
+<p>The list of sub-processors referred to in § 7 of the
+<a href="dpa-en.html">Data Processing Agreement</a>.</p>
+
+<h2>Sub-processors in use</h2>
+<p>The rows describe entrusted data. A provider may also process the customer's or IRIS
+operator's own data, covered by the Privacy Policy.</p>
+<div class="table-wrap"><table>
+<tr><th>Entity</th><th>Purpose</th><th>Data</th><th>Location</th><th>Transfer outside the EEA</th></tr>
+<tr><td>Resend: Plus Five Five, Inc., San Francisco, USA</td>
+<td>Sending emails and delivery events</td>
+<td>Recipient address, message content and subject, delivery events</td>
+<td>Sending from the AWS eu-west-1 region (Ireland). Account data, message metadata, logs and API records: USA. Resend keeps message content and metadata for 30 days</td>
+<td>Yes, to the USA. Standard Contractual Clauses (Commission Decision (EU) 2021/914), Module Three, in Resend's data processing agreement; in it Resend also states that it takes part in the EU-U.S. Data Privacy Framework</td></tr>
+<tr><td>Resend's further processors, among them Amazon Web Services, Inc. (USA)</td>
+<td>Infrastructure and services that Resend uses; IRIS has no contract with them</td>
+<td>Data supplied to Resend, to the extent needed for its services</td>
+<td>USA; sending through AWS eu-west-1 (Ireland). Full list: <a href="https://resend.com/legal/subprocessors">resend.com/legal/subprocessors</a></td>
+<td>Yes, within Resend's chain. Resend makes a contract with each sub-processor with comparable data protection obligations, is liable for it and gives 14 days' notice of changes</td></tr>
+<tr><td>Cloudflare, Inc., San Francisco, USA</td>
+<td>Proxy, TLS termination, DNS, Cloudflare Tunnel, public-image caching; Cloudflare Access protects operator access</td>
+<td>HTTP traffic, including form email addresses, page and message content passing through the Service, webhooks, IP addresses, full URL paths and cookies in transit; cached images. Access handles operator identity and a one-time PIN</td>
+<td>Cloudflare's global network of data centres, also outside the EEA. IRIS does not use a restriction of processing to the EU. Cached images for up to a year, as the cache header says</td>
+<td>Yes. Cloudflare's data processing agreement is part of the contract with Cloudflare (Self-Serve Subscription Agreement, section 6.1). Standard Contractual Clauses, Module Three; in the agreement Cloudflare also states that it takes part in the EU-U.S. Data Privacy Framework</td></tr>
+<tr><td>OVH Sp. z o.o., Wrocław, Poland (OVHcloud group): MX Plan mailbox</td>
+<td>Operator mailbox and mail redirects, including Controller instructions, data-subject requests and abuse reports</td>
+<td>Sender and recipient address, content, attachments and correspondence metadata, including Data supplied in a report</td>
+<td>France, OVHcloud data centres. Companies of the OVHcloud group can have remote access, among them from Canada and the United Kingdom</td>
+<td>Storage in the EEA. Remote access from Canada and the United Kingdom: Commission adequacy decisions (Article 45 GDPR). Access from other countries: Standard Contractual Clauses within the OVHcloud group (OVHcloud data processing agreement, section 6.4)</td></tr>
+<tr><td>OVH Sp. z o.o., Wrocław, Poland (OVHcloud group): VPS</td>
+<td>Hosting of the application and the PostgreSQL database; Cloudflare stays in front of the server</td>
+<td>All Annex 1 Data held in the application, database, export files and logs</td>
+<td>OVHcloud, VPS, France (EEA). Companies of the OVHcloud group can have remote access, among them from Canada and the United Kingdom</td>
+<td>Storage in the EEA. Remote access: as for the MX Plan mailbox</td></tr>
+</table></div>
+
+<h2>Planned sub-processors</h2>
+<p>No sub-processor is planned today. Before a new one is added, the notice procedure below
+applies.</p>
+<p>IRIS runs on an OVHcloud VPS, not on the operator's own hardware. Cloudflare Email
+Routing is not used; the OVHcloud mailbox handles incoming mail.</p>
+
+<h2>Other recipients</h2>
+<p><strong>Stripe Payments Europe, Limited</strong> (Dublin, Ireland) is the party to the
+contract with IRIS, because the operator's Stripe account is in Poland. Under its data
+processing agreement Stripe acts partly as a processor and partly as an independent
+controller, for example for fraud prevention and anti-money-laundering duties. Stripe
+transfers data to Stripe, LLC in the USA under its Data Transfers Addendum, which names the
+EU-U.S. Data Privacy Framework and Standard Contractual Clauses. Stripe handles subscriptions, add-on block purchases, Checkout, the billing
+portal and refunds. IRIS sends the customer's email, NIP and IRIS account identifier;
+Checkout collects the customer's payment and billing details, including name and address.
+Price and customer identifiers, return URLs, block identifier, period start and the number
+of leads in the purchased block are also sent. The count is a purchase parameter;
+the code does not send individual commenters' or subscribers' data to Stripe.</p>
+<p>IRIS's operator is controller of this customer data. Stripe therefore remains another
+recipient of billing data, rather than a Sub-processor of Data entrusted under the
+Agreement. This does not determine Stripe's controller or processor role for each operation.
+The <a href="privacy.html">Privacy Policy</a> covers the customer's own data. For the first
+customers the owner issues each faktura VAT manually from the Stripe payment; a Stripe
+payment document is not a promise here of an automatic Polish VAT invoice.</p>
+
+<h2>Meta as an independent controller</h2>
+<p><strong>Meta Platforms Ireland Ltd.</strong> is not a sub-processor. For data on its
+platform it acts as an independent controller under its own terms (Meta Platform Terms). IRIS
+exchanges data with Meta on the customer's instructions: it receives comments and messages
+and sends replies through the connected Instagram account. Meta is listed here for
+transparency.</p>
+
+<h2>What IRIS does not use</h2>
+<p>IRIS uses no external analytics, error-tracking or application log-collection service.
+It uses Cloudflare, including public-image caching; providers may keep their own logs.
+GitHub Pages hosts public legal pages, rather than entrusted Data sets; visits to those
+pages fall under the Privacy Policy. Tailscale serves host administration, and the deployment
+documentation does not identify customer data passing through it.</p>
+
+<h2>Changes to this list</h2>
+<ol>
+<li>IRIS's operator informs the customer of any intended addition or replacement of a
+sub-processor, including a planned one, at least 14 days before it begins processing data,
+by email to the address assigned to the account and by updating this page.</li>
+<li>Within those 14 days the customer may object. If the matter cannot be resolved, the
+customer may terminate by deleting the account; the Service prepares an export before
+deletion, available for 24 hours. It covers contacts, consent, suppressions, audit, campaigns,
+email templates, broadcasts, brand and billing, subject to the limitations in Agreement § 12(1).</li>
+</ol>
+
+<p>Draft last updated: 8 November 2026.</p>
+</section>
+
+<footer>IRIS &middot; <a href="dpa.html">Umowa powierzenia</a> &middot;
+<a href="dpa-en.html" lang="en">Data Processing Agreement</a> &middot;
+<a href="privacy.html" lang="en">Privacy Policy</a> &middot;
+<a href="terms.html" lang="en">Terms of Service</a> &middot;
+<a href="../data-deletion.html" lang="en">Data Deletion</a></footer>
+</main></body></html>

@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Privacy Policy: IRIS</title><link rel="stylesheet" href="../style.css"></head>
+<body><main>
+<p><strong>Draft for legal review. Do not publish.</strong></p>
+<h1>Privacy Policy</h1>
+<p class="meta">IRIS &middot; Version 3 &middot; draft of 8 November 2026</p>
+<p>This is a translation of <a href="privacy.html" lang="pl">the Polish notice</a>. The Polish text governs. Bracketed slots require completion or verification before publication.</p>
+
+<h2>1. Controller and scope</h2>
+<p>IRIS's operator and controller for the own-business processing described here is
+[OPERATOR: name or business name, legal form, register, address, NIP, REGON, telephone]. Data protection contact:
+privacy@irisapp.pl. The Operator has no data protection officer: at the present scale of
+processing, Article 37 GDPR does not require one.</p>
+<p>This notice covers customers and representatives, invitees without accounts, panel and
+legal-page visitors and people contacting IRIS. We separately describe customer commenters
+and subscribers. Their controller is the creator or business running the campaign; IRIS
+acts on its instructions under the <a href="dpa-en.html">version 3 DPA</a>.</p>
+<p>This notice covers the panel at panel.irisapp.pl and the IRIS legal pages, which are
+published today on GitHub Pages. The website at irisapp.pl is a separate project. Before
+that website starts to collect visitor data other than the data described here, this
+policy will describe that collection.</p>
+
+<h2>2. Sources and whether data is required</h2>
+<p>Data comes from the account holder, their representative or the operator adding an
+invitation; Meta's official API and webhooks; Stripe and Resend for payments and delivery;
+forms, browser requests and correspondence. Connecting Instagram supplies account identifiers,
+username, account type, permissions and token. We do not request Instagram passwords or scrape.</p>
+<p>Providing data needed for sign-in, the account and a selected service is voluntary but
+necessary to provide that service. Statutory billing data is needed for proper accounting.
+A request should contain enough information to respond or identify the matter; please avoid
+unnecessary data.</p>
+
+<h2>3. Customers', invitees' and visitors' own data</h2>
+<p>In this table, b, c and f mean Article 6(1)(b), (c) and (f) GDPR: contract or requested
+pre-contract steps, legal obligation and legitimate interests. For representatives of legal
+entity customers, contact and service rely on f, efficient cooperation with the represented
+customer, rather than a contract with the representative. The legal obligations under c come
+from Article 28(3) and (9) GDPR (the DPA), Articles 12 to 22 GDPR (requests from data
+subjects), Articles 106b and 112 of the Polish VAT Act and Articles 70 and 86 of the Polish
+Tax Ordinance (invoices and tax records). You may object to processing based on f (section 9).</p>
+<div class="table-wrap"><table>
+<tr><th>Data and purpose</th><th>Basis</th><th>Period</th></tr>
+<tr><td>Account: email, language, account name, settings, time zone and notification preferences; account service</td><td>b; f for representatives</td><td>Until account deletion</td></tr>
+<tr><td>Sign-in: email, one-time token hash, IP prefix; sending links and preventing abuse, including for people without an account</td><td>b on the person's request; f for security</td><td>Token valid for 15 minutes by default; record deleted 7 days after expiry</td></tr>
+<tr><td>Sessions: token hash, IP prefix /24 for IPv4 or /48 for IPv6, user agent and activity times; authentication</td><td>b and f, access protection</td><td>Until session expiry, sign-out or account deletion; default maximum session duration 7 days</td></tr>
+<tr><td>Invitations without an account: email, language, operator note, who adds the invitation and when, expiry and acceptance state; access to the service</td><td>f, managing invitations and access to the service</td><td>30 days after lapse: removal or expiry of an unused invitation. An unused invitation without expiry lapses 180 days after addition. Joined invitations do not lapse this way and are deleted with the account; separate erasure on request is possible</td></tr>
+<tr><td>DPA acceptance: version, time, IP prefix and user agent; documenting conclusion</td><td>c, documenting processing under Article 28 GDPR; f, evidence and defence of claims</td><td>Until account deletion</td></tr>
+<tr><td>Customer audit: time, identifiers, IP prefix, browser, changed field names and non-personal values; accountability and security</td><td>f, abuse detection and establishing actions</td><td>24 months, or earlier on account deletion</td></tr>
+<tr><td>Instagram connection: identifiers, username, type, permissions, encrypted token and expiry; integration</td><td>b, performing the requested integration</td><td>While connected; tokens are refreshed so initial expiry does not define total retention. Disconnecting removes the connection and the token; removing IRIS in the Instagram settings does not delete the token (section 7)</td></tr>
+<tr><td>Removed Instagram connections: identifier and dates; locating later webhooks and safely ending subscriptions</td><td>f, safe disconnection and erasure handling</td><td>90 days after successful webhook unsubscribe, or earlier with account deletion or reconnection of that identifier. Remains until unsubscribe succeeds</td></tr>
+<tr><td>Sender identity: name, postal and contact email addresses, sending domain; identifying the sender and configuring mail. Sender details appear in footers and capture pages</td><td>b; f for representative details</td><td>Until account deletion; on domain changes, data needed to finish provider-side domain removal may remain</td></tr>
+<tr><td>Campaigns, templates, images, lists and settings; service provision. Images are public with a one-year cache header</td><td>b for customer data; other people's data is entrusted by the customer, section 4</td><td>While the account exists, subject to content deletion where the feature supports it. Contact erasure does not automatically remove images/content; caching is covered in section 7</td></tr>
+<tr><td>Billing: email, NIP, buyer details, Stripe customer, subscription, price and payment IDs, purchased blocks and block lead quantities; payments and invoicing</td><td>b for the contract; c for tax/accounting records; f for claims</td><td>Local subscriptions/purchases until account deletion; Stripe events 90 days after receipt, or earlier with the account. Stripe customer and tax records remain after account deletion. We keep invoices, corrections and payment documents for the period that tax law requires: 5 years from the end of the calendar year in which the tax payment was due (Articles 70(1) and 86 of the Tax Ordinance, Article 112 of the VAT Act). Stripe also keeps its own payment data as a separate controller, under its own rules</td></tr>
+<tr><td>Account exports and deletion proof; return and accountability</td><td>b, service; f, evidence; c where a GDPR obligation is performed</td><td>Ready export 24 hours; account deletion proof 12 months after completion; Meta requests 12 months after receipt, without purging a pending request during handling</td></tr>
+<tr><td>Contact, support and complaints: address, content, attachments and metadata; responses and case handling</td><td>b for contractual support; f for other correspondence and claims; c for rights requests/legal obligations</td><td>Support and other correspondence: 12 months after the case closes. Complaints and matters that can lead to a claim: until the claims are time-barred, that is 3 years for claims related to a business activity and 6 years in other matters, ending on the last day of a calendar year (Article 118 of the Polish Civil Code). GDPR requests and the answers: 3 years after the case closes, to show that they were handled (Article 5(2) GDPR). The messages are in the OVHcloud mailbox. The Operator deletes them by hand after these periods and checks the mailbox for this at least once a quarter</td></tr>
+<tr><td>Request/error logs, identifiers and sender domain; diagnostics and protection. Ordinary request logging records route pattern, status and duration, not a full token link</td><td>f, security and reliability</td><td>Docker logs: up to 5 files of 10 MB per container. When the limit is full, the oldest file is overwritten, so the period depends on traffic, not on time. IRIS sends no logs to an outside service. Logs record identifiers of accounts and objects, and an error message can hold other data that the error carries. Providers (Cloudflare, Resend, Stripe, GitHub) keep their own logs under their own rules</td></tr>
+<tr><td>Operator access: email, sessions, IP prefix, browser, operator handle and actions; controlled support/security</td><td>f, control of privileged access</td><td>Sign-in tokens 7 days after expiry; sessions until expiry, maximum 8 hours and 60 minutes idle; operator actions 24 months, including after customer account deletion</td></tr>
+<tr><td>Technical counters and metrics with account identifiers; service operation and limits</td><td>f, reliability and abuse prevention</td><td>IRIS does not persist metrics; connection health history 24 months, technical Meta calls 14 days, skipped-send counts 90 days; this data also goes when an Instagram account is disconnected and when the IRIS account is deleted. The limit counters and protection state of a disconnected Instagram account stay at least 24 hours and at most 90 days after the disconnection, also after the IRIS account is deleted, so that a new connection of that Instagram account does not reset the protection</td></tr>
+<tr><td>Hash of a sender identifier after account deletion; preventing another account reusing the sender address</td><td>f, preventing impersonation</td><td>Indefinitely. The hash is pseudonymous, not guaranteed anonymisation: it holds no address, but for common names it can be reversed. We keep it with no time limit, because the risk that someone poses as the former sender does not end with time. IRIS deletes the data needed to remove a sending domain at Resend (the domain name and the provider's identifier) when Resend confirms the removal, or when the hourly comparison with the Resend domain list no longer finds the domain</td></tr>
+</table></div>
+<p>The automatic deletion periods are set in the IRIS code, not in the configuration. The
+configuration changes only the validity of sessions and sign-in links, and IRIS uses the
+default values given in the table. The deletion jobs run once a day and each time the
+application starts, so data usually goes within one day after its period ends. The jobs
+delete in batches; with a large backlog, the rest moves to the next days.</p>
+
+<h2>4. Customer commenters, message senders and subscribers</h2>
+<p>When a comment enters a campaign, IRIS may create a contact with Instagram ID and username
+before an email address or marketing consent exists. We handle comments, raw webhooks with
+comments/DMs, private/public replies, capture forms, six-digit codes and digests, email
+addresses, confirmations, lists, tags, consent, unsubscribes, suppressions, delivery events
+and link clicks. Identifiers can also appear in job logs.</p>
+<p>Instagram sends IRIS every private message of the connected account. IRIS stores the raw
+delivery for 90 days, but acts only on messages in a conversation that a campaign started.
+IRIS records list membership when a person gives the address, before the address is
+confirmed. Only a confirmed address with marketing consent receives a broadcast.</p>
+<p>The creator determines purpose and basis, provides its notice and is responsible for
+lawful communications. IRIS does not replace that notice. IRIS has no field for the
+creator's privacy notice today. For this reason, capture pages and the footers of emails sent
+for the creator link today to this IRIS privacy policy, not to the creator's notice. The
+creator must give its own notice to these people. A comment or use of IRIS is not consent to
+unrestricted marketing. Resource delivery and later marketing are distinct purposes. The
+creator can use the <a href="end-user-notice.html#en">privacy notice template for
+creators</a>. A consent record in IRIS alone does not prove that the consent is valid; the
+creator assesses that. IRIS does not check the age of commenters or subscribers.</p>
+<p>Consent records contain scope, channel, time, key, recorded wording and language. The DM
+path reads wording from the sent private reply; if none is recorded it stores wording
+rendered at capture for delivery, without marketing consent. Assessment of this fallback
+and historical records remains open in the DPA.</p>
+<div class="table-wrap"><table>
+<tr><th>Entrusted data</th><th>Retention</th></tr>
+<tr><td>Addressed contacts, consent, conversations, broadcast recipients, clicks, list/tag links</td><td>Until contact or customer account deletion; historical conversations without a contact: 90 days after update</td></tr>
+<tr><td>Addressless contacts</td><td>90 days from the last comment or message, taking later contact/conversation updates into account, if the contact never had an address and nothing requires retention. A tag or live list prevents deletion, as does a list in its 10-second restoration window, an address/verification in a conversation, awaiting a code, valid unused capture link, consent, delivery, suppression, broadcast recipient or click. Eligibility is reassessed after holds end; daily batch job, with possible delays from locks, backlog or account deletion</td></tr>
+<tr><td>Capture tokens / outbound intents / processed events</td><td>30 days after expiry / 30 days after update / 45 days after first receipt; erasure details depend on intent state</td></tr>
+<tr><td>Raw webhooks, automation executions, deliveries and mail events</td><td>90 days after receipt, evaluation, creation or receipt respectively; mail events without an account key may remain after deletion until 90 days from receipt</td></tr>
+<tr><td>Suppression</td><td>After contact erasure the normalized address, reason and date remain, plus a broadcast identifier (broadcast_id) where recorded, detached from the contact and without diagnostics, to prevent further sends; removed with the customer's account</td></tr>
+</table></div>
+<p>The controller must assess the validity and necessity of retention, including
+suppressions and tagged contacts. Annex 1 and §§ 9 and 12 of the
+<a href="dpa-en.html">DPA</a> give full rules and exceptions for sent intents, content and
+vendor copies.</p>
+
+<h2>5. Recipients and locations</h2>
+<ul>
+<li><strong>Meta Platforms Ireland Ltd.</strong> is an independent controller on its platform.
+We exchange data when connecting accounts, receiving comments/messages and sending replies.</li>
+<li><strong>Resend</strong> (Plus Five Five, Inc., USA) handles sign-in/other IRIS mail and
+customer mail, recipient addresses, subjects, content and delivery events. AWS is Resend's
+further infrastructure provider, not directly ordered IRIS hosting.</li>
+<li><strong>Cloudflare</strong> (Cloudflare, Inc., USA) supplies proxy, TLS, DNS, Tunnel,
+public-image cache and operator Access. It terminates TLS and sees transmitted data, IPs,
+full paths, forms, webhooks and cookies. This draft does not establish an EEA restriction
+for its global network.</li>
+<li><strong>OVH Sp. z o.o.</strong>, Wrocław, Poland (OVHcloud group) hosts the application and the PostgreSQL database: OVHcloud,
+VPS, France (EEA). Traffic to the application passes through Cloudflare. OVHcloud also
+handles the operator mailbox and redirects; OVHcloud states that it stores emails only in its
+data centres in Europe.</li>
+<li><strong>Stripe Payments Europe, Limited</strong> (Ireland) handles the IRIS customer's
+own billing. It receives email, NIP, account ID and purchase metadata, including block lead
+quantities; Checkout collects payment details, name and address. We do not send individual
+subscribers' data to Stripe. Stripe processes this data partly on the Operator's instructions
+and partly as a separate controller, for example for fraud detection and anti-money-laundering
+duties. It is not a sub-processor of entrusted DPA Data for this scope. For the first
+customers the owner issues faktura VAT manually from the Stripe payment.</li>
+<li><strong>GitHub Pages</strong> (GitHub, Inc., USA) hosts the public legal pages. GitHub
+logs the IP address of each visitor for security purposes and keeps it under its own rules.
+The authorized operator accesses data for support/operation; Tailscale serves host
+administration and deployment documentation says it carries no customer data.</li>
+<li>Public authorities may receive data where required by law. An accounting office, a tax
+adviser or a lawyer can receive the data needed for billing or for the defence of claims,
+when the Operator uses their services.</li>
+</ul>
+<p>The <a href="subprocessors.html#en">version 3 Sub-processor List</a> gives service, data
+and location by provider. Not every recipient of operator data is a sub-processor of
+customer data. The Operator administers the server through Tailscale. IRIS makes no copies
+of the database at other providers today. Providers keep their own logs and copies under
+their own rules.</p>
+
+<h2>6. Transfers outside the EEA</h2>
+<p>A database in France does not mean that all data stays in the EEA. Data goes outside the
+EEA in these cases:</p>
+<ul>
+<li><strong>Resend</strong>: IRIS sends mail from the AWS region eu-west-1 (Ireland), but
+Resend does its main processing in the USA, including account data and metadata. The basis is
+the EU Standard Contractual Clauses (Commission Decision 2021/914, Module 2, and Module 3 for
+data that the customer entrusts) in the Resend data processing agreement. Resend also states
+that it complies with the EU-U.S. Data Privacy Framework.</li>
+<li><strong>Cloudflare</strong> operates globally, and traffic can pass through servers
+outside the EEA. Cloudflare states that it complies with the Data Privacy Framework; where
+that framework does not cover a transfer, the Cloudflare data processing agreement applies
+the EU Standard Contractual Clauses (Module 2 or 3).</li>
+<li><strong>Stripe</strong> transfers data to Stripe, LLC in the USA. The basis is the EU
+Standard Contractual Clauses in the Stripe data processing agreement, and Stripe, LLC states
+that it complies with the EU-U.S. Data Privacy Framework.</li>
+<li><strong>GitHub</strong> processes visit data in the USA. GitHub states that it complies
+with the EU-U.S. Data Privacy Framework and uses the EU Standard Contractual Clauses.</li>
+</ul>
+<p>The OVHcloud server is in France (EEA), and OVHcloud states that it keeps the mailbox in
+Europe. Meta Platforms Ireland Ltd. is responsible for transfers on its platform as an
+independent controller.</p>
+<p>The contact in section 1 provides information and access to copies of applicable
+safeguards, protecting confidentiality and other people's rights. Policy acceptance does
+not replace a transfer basis or marketing consent.</p>
+
+<h2>7. Disconnecting, deauthorization and account deletion</h2>
+<p>Disconnecting the Instagram account in IRIS deletes the connection, the encrypted token
+and the technical records of that account: received notifications, the message queue,
+automation executions, and the history of Meta calls and connection states. It also pauses
+the campaigns of that account. It does not delete the IRIS account, contacts, conversations,
+consents, campaigns, templates or billing.</p>
+<p><strong>Removing IRIS in the Instagram settings does not delete data stored in IRIS
+today, the token included.</strong> Meta then tells IRIS, and IRIS marks the account as
+disabled and stops sending from it and reading its comments. To delete data, the customer
+disconnects the account in IRIS, deletes the IRIS account or sends a data deletion request
+through Meta. A deletion request through Meta deletes the connection to the named Instagram
+account, the token and the technical records, as a disconnection does; it does not delete
+contacts, campaigns or the IRIS account. The <a href="../data-deletion.html#en">Data
+deletion</a> page gives the details.</p>
+<p>IRIS account deletion is separate. An export is prepared first and available for 24 hours;
+downloading it is not a deletion condition. The sequence ends connections/services and
+purges account data. The DPA provides 30 days with the mail-event/export/proof exceptions
+above. Own billing data required by law may remain longer. The deletion runs in steps, and
+IRIS records each step that is done. After an error, IRIS repeats the deletion from the
+recorded step. When the retries run out, the account deletion screen shows the error and
+lets you start the deletion again; you can also write to privacy@irisapp.pl.</p>
+<p>When Meta does not answer, or IRIS's own call limit is used up, the disconnection still
+happens at once, and IRIS sends the request to switch off the notifications at Meta later.
+Until then a queued job holds the Instagram account identifier and the encrypted token, also
+after the IRIS account is deleted. IRIS usually repeats the attempt for some hours: up to 8
+attempts, 5 minutes to one hour apart. When a switch or a protection on the IRIS side holds
+calls back, the job waits until it is released. IRIS deletes the record of the job not later
+than 7 days after the job ends: 24 hours after it completes, or 7 days after it is discarded.
+The record of the disconnected account (Instagram identifier and dates) stays until the
+notifications are switched off and for 90 days after that.</p>
+<p>IRIS makes no backups of the database today, thus deleted data does not stay in backups.
+When backups exist, this policy will give their retention period. Images can stay in the
+caches of Cloudflare and of browsers for up to a year, because the cache header allows that
+long; IRIS does not delete these copies. The Operator deletes mailbox messages by hand after
+the periods in section 3, and logs go when newer logs overwrite them. Providers delete data
+in their own systems under their own rules.</p>
+
+<h2>8. Cookies, browser storage and click measurement</h2>
+<p>The <a href="cookies.html#en">cookie and browser-storage notice</a> lists names, purposes
+and periods. The reviewed application code contains no external analytics or advertising
+tracking scripts. This does not exclude provider logs or email click measurement.</p>
+<p>IRIS counts email-link clicks per contact: link, first/last time and hit count, without IP
+or user agent in the click record. Resend open/click tracking is disabled; IRIS redirects
+still count clicks. This applies to the links in broadcasts to contacts and in the email with
+the requested resource. The link goes first to an IRIS address with the path /r/, and IRIS
+redirects at once to the target address. IRIS does not measure email opens. It does not count
+a visit that looks automated (for example a mail scanner or a link preview), or a visit
+within 3 seconds after the send; the redirect always works.</p>
+<p>The link in a message holds an identifier of the send, so IRIS assigns the click to the
+contact. The measurement uses no cookies. IRIS
+processes click data on the instructions of the creator, who is its controller and decides
+the legal basis (section 4). Clicks are deleted with the contact.</p>
+
+<h2>9. Rights and contact</h2>
+<p>Subject to GDPR conditions, you may request access, rectification, erasure, restriction
+and portability. You may object to legitimate-interest processing. Where consent is the
+basis, you may withdraw it without affecting earlier lawfulness. You may complain to the
+Polish supervisory authority, Prezes Urzędu Ochrony Danych Osobowych (UODO), or another
+competent authority. Use the contact in section 1; identity checks are proportionate and
+avoid unnecessary documents. We respond without undue delay, normally within one month,
+and communicate justified extensions under the GDPR. We usually answer in 2 working days.</p>
+<p>Commenters/subscribers should first contact the creator as controller. IRIS forwards
+requests it receives to the relevant customer and assists under the DPA. An unsubscribe
+blocks further sending within that account; it does not automatically erase all data.</p>
+<p>We automatically match comments to the campaign rules that the customer sets, and apply
+sending and sign-in limits and security controls. IRIS makes no decisions based solely on
+automated processing that produce legal effects concerning a person or similarly
+significantly affect a person (Article 22 GDPR).</p>
+<p>The nearest to such a decision is the automatic pause of sending from a customer's
+account. IRIS checks the emails sent from the account in the last 30 days (test sends
+excluded), when there are at least 200. Sending is paused when bounces reach 1% of these
+emails (and at least 5) or recipient complaints reach 0.2% (and at least 3). The pause stops
+emails, and replies and messages on Instagram, from that account; the IRIS account, the data
+and the Instagram connection stay. The users of the account get an email with the reason. A
+person resumes sending: the Operator, after a check of the list together with the customer.
+The customer can give its view, contest the pause and ask for a review by a person: reply to
+that email or write to support@irisapp.pl. We usually answer in 2 working days.</p>
+
+<h2>10. Changes and related documents</h2>
+<p>This notice describes processing and does not seek consent through continued use.
+Material purpose/scope changes require appropriate information before new processing.
+The draft date/version is above. We tell customers about a material change by email to the
+account address before the change applies. We make earlier versions available on request to
+privacy@irisapp.pl. See the <a href="terms-en.html">Terms</a>, <a href="dpa-en.html">DPA</a>
+and <a href="cookies.html#en">cookie notice</a>.</p>
+
+<footer>IRIS &middot; <a href="privacy-en.html">Privacy Policy</a> &middot; <a href="terms-en.html">Terms</a> &middot; <a href="cookies.html#en">Cookies</a> &middot; <a href="dpa-en.html">DPA</a> &middot; <a href="subprocessors.html#en">Sub-processors</a> &middot; <a href="../data-deletion.html">Data Deletion</a></footer>
+</main></body></html>

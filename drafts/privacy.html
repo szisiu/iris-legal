@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Polityka prywatności: IRIS</title><link rel="stylesheet" href="../style.css"></head>
+<body><main>
+<p><strong>Projekt do przeglądu prawnego. Nie publikować.</strong></p>
+<h1>Polityka prywatności</h1>
+<p class="meta">IRIS &middot; Wersja 3 &middot; projekt z 8 listopada 2026</p>
+<p><a href="privacy-en.html" lang="en">English translation</a>. Miejsca w nawiasach wymagają uzupełnienia lub sprawdzenia przed publikacją.</p>
+
+<h2>1. Administrator i zakres informacji</h2>
+<p>Operatorem IRIS i administratorem danych opisanych w części dotyczącej własnej działalności
+IRIS jest [OPERATOR: imię i nazwisko lub firma, forma prawna, rejestr, adres, NIP, REGON, telefon]. Kontakt w sprawach danych:
+privacy@irisapp.pl. Operator nie ma inspektora ochrony danych: przy obecnej skali
+przetwarzania art. 37 RODO nie wymaga jego wyznaczenia.</p>
+<p>Informacja dotyczy klientów i ich przedstawicieli, osób zaproszonych bez konta,
+odwiedzających panel i strony prawne oraz osób kontaktujących się z IRIS. Oddzielnie
+opisujemy dane osób komentujących i subskrybentów klientów. Dla tych danych administratorem
+jest twórca lub firma prowadząca kampanię, a IRIS działa na ich polecenie na podstawie
+<a href="dpa.html">Umowy powierzenia, wersja 3</a>.</p>
+<p>Ta informacja obejmuje panel pod adresem panel.irisapp.pl i strony prawne IRIS, które
+są dziś publikowane w GitHub Pages. Strona internetowa pod adresem irisapp.pl jest odrębnym
+projektem. Zanim ta strona zacznie zbierać dane odwiedzających inne niż opisane tutaj, ta
+polityka opisze to zbieranie.</p>
+
+<h2>2. Źródła danych i obowiązek ich podania</h2>
+<p>Dane otrzymujemy od osoby zakładającej konto, jej przedstawiciela lub operatora
+wprowadzającego zaproszenie; od Meta przez oficjalne API i webhooki; od Stripe i Resend
+w związku z płatnościami i doręczeniami; z formularzy, żądań przeglądarki i korespondencji.
+Identyfikator i nazwę konta Instagram, jego typ, uprawnienia i token otrzymujemy przy
+połączeniu konta. Nie prosimy o hasło Instagram i nie stosujemy scrapingu.</p>
+<p>Podanie danych niezbędnych do logowania, konta i wybranej usługi jest dobrowolne, ale bez
+nich nie możemy jej świadczyć. Dane wymagane przepisami rozliczeniowymi są niezbędne do
+prawidłowego rozliczenia. Zgłoszenie powinno zawierać dane pozwalające odpowiedzieć lub
+zidentyfikować żądanie; prosimy nie przekazywać zbędnych danych.</p>
+
+<h2>3. Własne dane klientów, zaproszonych osób i odwiedzających</h2>
+<p>W tabeli lit. b, c i f oznaczają odpowiednio art. 6 ust. 1 lit. b, c i f RODO: wykonanie
+umowy lub działania na żądanie przed jej zawarciem, obowiązek prawny oraz prawnie uzasadniony
+interes. Dla przedstawiciela klienta będącego osobą prawną podstawą kontaktu i obsługi jest
+lit. f, czyli sprawna współpraca z reprezentowanym klientem, zamiast umowy z przedstawicielem.
+Obowiązki prawne z lit. c wynikają z art. 28 ust. 3 i 9 RODO (umowa powierzenia), z art. 12
+do 22 RODO (żądania osób), z art. 106b i 112 ustawy o VAT oraz z art. 70 i 86 Ordynacji
+podatkowej (faktury i dokumentacja podatkowa). Wobec przetwarzania na podstawie lit. f
+można wnieść sprzeciw (część 9).</p>
+<div class="table-wrap"><table>
+<tr><th>Dane i cel</th><th>Podstawa</th><th>Okres</th></tr>
+<tr><td>Konto: e-mail, język, nazwa konta, ustawienia, strefa czasowa i preferencje powiadomień; obsługa konta</td><td>Lit. b; dla przedstawicieli lit. f</td><td>Do usunięcia konta</td></tr>
+<tr><td>Logowanie: e-mail, skrót jednorazowego tokena, prefiks IP; dostarczenie linku i ograniczanie nadużyć, także dla osoby bez konta</td><td>Lit. b na żądanie osoby; lit. f dla bezpieczeństwa</td><td>Token ważny domyślnie 15 minut; rekord usuwany 7 dni po wygaśnięciu</td></tr>
+<tr><td>Sesje: skrót tokena, prefiks IP /24 dla IPv4 lub /48 dla IPv6, identyfikator przeglądarki, daty użycia; uwierzytelnianie</td><td>Lit. b oraz lit. f, ochrona dostępu</td><td>Do wygaśnięcia sesji, wylogowania albo usunięcia konta; domyślny maksymalny czas sesji 7 dni</td></tr>
+<tr><td>Zaproszenia bez konta: e-mail, język, notatka operatora, kto i kiedy dodaje zaproszenie, termin ważności i stan przyjęcia; dostęp do usługi</td><td>Lit. f, prowadzenie zaproszeń i kontrola dostępu do usługi</td><td>30 dni od utraty ważności: usunięcia lub wygaśnięcia niewykorzystanego zaproszenia. Bez terminu niewykorzystane zaproszenie wygasa po 180 dniach od dodania. Przyjęte zaproszenie nie wygasa tą drogą i jest usuwane z kontem; możliwe odrębne usunięcie na żądanie</td></tr>
+<tr><td>Akceptacja umowy powierzenia: wersja, czas, prefiks IP i identyfikator przeglądarki; dokumentacja zawarcia</td><td>Lit. c, udokumentowanie powierzenia zgodnie z art. 28 RODO; lit. f, dowód i obrona roszczeń</td><td>Do usunięcia konta</td></tr>
+<tr><td>Dziennik działań klienta: czas, identyfikatory, prefiks IP, przeglądarka, nazwy zmienionych pól i wartości nieosobowe; rozliczalność i bezpieczeństwo</td><td>Lit. f, wykrywanie nadużyć i ustalanie przebiegu działań</td><td>24 miesiące, wcześniej przy usunięciu konta</td></tr>
+<tr><td>Połączenie Instagram: identyfikatory, nazwa, typ konta, uprawnienia, zaszyfrowany token i jego ważność; obsługa połączenia</td><td>Lit. b, wykonanie zleconej integracji</td><td>Przez czas połączenia; tokeny są odnawiane, więc pierwotny termin nie wyznacza całej retencji. Odłączenie usuwa połączenie i token; usunięcie IRIS w ustawieniach Instagrama nie usuwa tokena (część 7)</td></tr>
+<tr><td>Rejestr usuniętych połączeń Instagram: identyfikator i daty; odnajdywanie późniejszych webhooków i bezpieczne zakończenie subskrypcji</td><td>Lit. f, bezpieczne zakończenie integracji i realizacja usuwania</td><td>90 dni od skutecznego wypisania webhooków, wcześniej z kontem lub ponownym połączeniem tego identyfikatora. Do skutecznego wypisania wpis pozostaje</td></tr>
+<tr><td>Dane nadawcy: nazwa, adres pocztowy, kontaktowy e-mail, domena wysyłkowa; identyfikacja nadawcy i konfiguracja poczty. Dane nadawcy są publikowane w stopkach i na stronach zapisu</td><td>Lit. b; lit. f dla danych przedstawiciela</td><td>Do usunięcia konta; przy zmianie domeny dane niezbędne do dokończenia jej usunięcia u dostawcy mogą pozostać</td></tr>
+<tr><td>Kampanie, szablony, obrazy, listy i ustawienia; realizacja usługi. Obrazy są publiczne, z rocznym nagłówkiem cache</td><td>Lit. b dla danych klienta; dane innych osób są powierzane przez klienta, część 4</td><td>Przez czas istnienia konta, z uwzględnieniem usunięcia danej treści tam, gdzie funkcja to umożliwia. Usunięcie kontaktu nie usuwa automatycznie obrazów i treści; cache opisuje część 7</td></tr>
+<tr><td>Rozliczenia: e-mail, NIP, dane nabywcy, identyfikatory klienta Stripe, subskrypcji, cen i płatności, zakupione bloki i liczby kontaktów w blokach; płatność i faktura</td><td>Lit. b dla wykonania umowy; lit. c dla dokumentacji podatkowej i rachunkowej; lit. f dla dochodzenia roszczeń</td><td>Lokalne subskrypcje i zakupy do usunięcia konta; zdarzenia Stripe 90 dni od otrzymania, wcześniej z kontem. Rekord klienta Stripe i dokumentacja podatkowa pozostają po usunięciu konta. Faktury, korekty i dokumenty płatności przechowujemy przez okres wymagany przepisami podatkowymi: 5 lat od końca roku kalendarzowego, w którym mija termin płatności podatku (art. 70 § 1 i art. 86 Ordynacji podatkowej, art. 112 ustawy o VAT). Stripe przechowuje swoje dane o płatnościach także jako odrębny administrator, według własnych zasad</td></tr>
+<tr><td>Eksport konta i potwierdzenia usunięcia; zwrot danych i rozliczalność</td><td>Lit. b, wykonanie usługi; lit. f, dowód realizacji; lit. c, gdy wykonujemy obowiązek RODO</td><td>Gotowy eksport 24 godziny; potwierdzenie usunięcia konta 12 miesięcy od zakończenia; żądanie Meta 12 miesięcy od otrzymania, bez usuwania niezakończonego żądania podczas obsługi</td></tr>
+<tr><td>Kontakt, wsparcie i reklamacje: adres, treść, załączniki i metadane; odpowiedź i obsługa sprawy</td><td>Lit. b przy obsłudze umowy; lit. f dla innej korespondencji i roszczeń; lit. c przy żądaniach praw i obowiązkach prawnych</td><td>Wsparcie i inna korespondencja: 12 miesięcy od zamknięcia sprawy. Reklamacje i sprawy, z których może wyniknąć roszczenie: do przedawnienia roszczeń, czyli 3 lata dla roszczeń związanych z działalnością gospodarczą i 6 lat w innych sprawach, z końcem roku kalendarzowego (art. 118 Kodeksu cywilnego). Żądania z RODO i odpowiedzi: 3 lata od zamknięcia sprawy, aby wykazać ich realizację (art. 5 ust. 2 RODO). Wiadomości są w skrzynce OVHcloud. Operator usuwa je ręcznie po tych okresach i przegląda w tym celu skrzynkę co najmniej raz na kwartał</td></tr>
+<tr><td>Logi żądań i awarii, identyfikatory, dane domeny nadawcy; diagnostyka i ochrona. Zwykły log żądania zapisuje wzorzec trasy, status i czas, nie pełny link z tokenem</td><td>Lit. f, bezpieczeństwo i niezawodność</td><td>Logi Docker: do 5 plików po 10 MB na kontener. Po zapełnieniu limitu najstarszy plik jest nadpisywany, więc okres zależy od ruchu, a nie od czasu. IRIS nie wysyła logów do zewnętrznej usługi. Logi zapisują identyfikatory kont i obiektów, a komunikat błędu może zawierać inne dane, które niesie błąd. Logi dostawców (Cloudflare, Resend, Stripe, GitHub) dostawcy przechowują według własnych zasad</td></tr>
+<tr><td>Dostęp operatora: e-mail, sesje, prefiks IP, przeglądarka, identyfikator operatora i czynności; kontrolowane wsparcie i bezpieczeństwo</td><td>Lit. f, kontrola uprzywilejowanego dostępu</td><td>Tokeny logowania 7 dni po wygaśnięciu; sesja do wygaśnięcia, maksymalnie 8 godzin i 60 minut bezczynności; czynności operatora 24 miesiące, także po usunięciu konta klienta</td></tr>
+<tr><td>Liczniki techniczne i metryki z identyfikatorami konta; utrzymanie i ograniczenia usługi</td><td>Lit. f, niezawodność i zapobieganie nadużyciom</td><td>Metryki nie są utrwalane przez IRIS; historia stanów zdrowia połączeń 24 miesiące, techniczne wywołania Meta 14 dni, liczniki pominiętych wysyłek 90 dni; te dane znikają też przy odłączeniu konta Instagram i usunięciu konta IRIS. Liczniki limitów i stan zabezpieczeń odłączonego konta Instagram zostają co najmniej 24 godziny i najwyżej 90 dni od odłączenia, także po usunięciu konta IRIS, aby ponowne połączenie tego konta Instagram nie wyzerowało ochrony</td></tr>
+<tr><td>Skrót identyfikatora nadawcy po usunięciu konta; zapobieganie ponownemu użyciu tego samego adresu nadawcy przez inne konto</td><td>Lit. f, ochrona przed podszywaniem się</td><td>Bezterminowo. Skrót jest pseudonimem, nie gwarantowaną anonimizacją: nie zawiera adresu, ale dla częstych nazw można go odwrócić. Zachowujemy go bez limitu czasu, bo ryzyko podszycia się pod byłego nadawcę nie mija z czasem. Dane potrzebne do usunięcia domeny nadawczej u Resend (nazwa domeny i identyfikator u dostawcy) IRIS usuwa, gdy Resend potwierdzi usunięcie domeny albo gdy cogodzinne porównanie z listą domen w Resend jej nie znajdzie</td></tr>
+</table></div>
+<p>Okresy automatycznego usuwania są zapisane w kodzie IRIS, nie w konfiguracji.
+Konfiguracja zmienia tylko czas ważności sesji i linku logowania, a IRIS używa wartości
+domyślnych podanych w tabeli. Zadania usuwania działają raz na dobę i przy każdym
+uruchomieniu aplikacji, więc dane znikają zwykle w ciągu doby po upływie okresu. Zadania
+usuwają dane partiami; przy dużej zaległości reszta przechodzi na kolejne dni.</p>
+
+<h2>4. Osoby komentujące, piszące wiadomości i subskrybenci klientów</h2>
+<p>Jeżeli komentarz trafia do kampanii, IRIS może utworzyć kontakt z identyfikatorem i nazwą
+Instagram przed podaniem adresu i przed zgodą marketingową. Obsługujemy komentarze, surowe
+webhooki z komentarzami i DM, odpowiedzi prywatne i publiczne, formularze zapisu, sześciocyfrowe
+kody i ich skróty, adresy e-mail, potwierdzenia, listy, tagi, zgody, wypisy, blokady wysyłki,
+zdarzenia doręczenia i kliknięcia w linki. Identyfikatory mogą występować także w logach zadań.</p>
+<p>Instagram przesyła IRIS każdą prywatną wiadomość połączonego konta. IRIS zapisuje surową
+dostawę na 90 dni, ale działa tylko na wiadomościach w rozmowie rozpoczętej przez kampanię.
+Przynależność do listy IRIS zapisuje, gdy osoba poda adres, jeszcze przed jego
+potwierdzeniem. Wysyłkę zbiorczą dostaje tylko potwierdzony adres ze zgodą marketingową.</p>
+<p>Twórca określa cel i podstawę przetwarzania, informuje o nich i odpowiada za zgodność
+komunikacji z prawem. IRIS nie zastępuje jego informacji o prywatności.
+IRIS nie ma dziś pola na informację twórcy o prywatności. Dlatego strona zapisu i stopki
+e-maili wysyłanych w imieniu twórcy prowadzą dziś do tej polityki prywatności IRIS, a nie do
+informacji twórcy. Twórca musi sam przekazać swoją informację tym osobom. Sam komentarz ani
+korzystanie z IRIS nie jest zgodą na dowolny marketing. Dostarczenie zamówionego materiału
+i późniejsze wiadomości marketingowe są odrębnymi celami. Twórca może użyć
+<a href="end-user-notice.html">wzoru informacji o przetwarzaniu danych dla twórców</a>.
+Sam zapis zgody w IRIS nie dowodzi, że zgoda jest ważna; ocenia to twórca. IRIS nie sprawdza
+wieku osób komentujących ani subskrybentów.</p>
+<p>Zapis zgody zawiera zakres, kanał, czas, klucz, zapisane brzmienie i język. Ścieżka DM
+korzysta z treści wysłanej odpowiedzi prywatnej; jeżeli nie ma takiego zapisu, zapisuje
+aktualnie wygenerowaną treść dla dostarczenia materiału bez zgody marketingowej. Ocena tego
+wyjątku i historycznych zapisów pozostaje otwarta w Umowie powierzenia.</p>
+<div class="table-wrap"><table>
+<tr><th>Dane powierzone</th><th>Retencja</th></tr>
+<tr><td>Kontakty z adresem, zgody, rozmowy, odbiorcy wysyłek, kliknięcia i powiązania list/tagów</td><td>Do usunięcia kontaktu lub konta klienta; historyczne rozmowy bez kontaktu 90 dni od aktualizacji</td></tr>
+<tr><td>Kontakty bez adresu</td><td>90 dni od ostatniego komentarza lub wiadomości, z uwzględnieniem późniejszych aktualizacji kontaktu lub rozmowy, jeżeli kontakt nigdy nie miał adresu i nic nie wymaga jego zachowania. Tag i aktywna lista zatrzymują usunięcie; także lista w 10-sekundowym okresie przywrócenia, adres lub weryfikacja w rozmowie, oczekiwanie na kod, ważny niewykorzystany link, zgoda, doręczenie, blokada wysyłki, odbiorca wysyłki lub kliknięcie. Po ustaniu przeszkód następuje ponowna ocena; zadanie codzienne, partiami, z możliwym opóźnieniem przez blokady, zaległość lub usuwanie konta</td></tr>
+<tr><td>Tokeny zapisu / zlecenia wysyłki / przetworzone zdarzenia</td><td>30 dni od wygaśnięcia / 30 dni od aktualizacji / 45 dni od pierwszego odbioru; szczegóły usuwania zależą od stanu zlecenia</td></tr>
+<tr><td>Surowe webhooki, wykonania automatyzacji, doręczenia i zdarzenia pocztowe</td><td>90 dni od odpowiednio otrzymania, oceny, utworzenia lub otrzymania; zdarzenia pocztowe bez klucza konta mogą pozostać po jego usunięciu do końca 90 dni od otrzymania</td></tr>
+<tr><td>Blokada wysyłki</td><td>Po usunięciu kontaktu pozostaje adres znormalizowany, przyczyna i data oraz, jeżeli jest zapisany, identyfikator wysyłki zbiorczej (broadcast_id), bez powiązania z kontaktem i diagnostyki, aby zapobiec dalszej wysyłce; wpis znika z kontem klienta</td></tr>
+</table></div>
+<p>Ważność i zasadność zachowania danych, w tym blokad wysyłki i kontaktów z tagiem, wymaga
+oceny administratora. Pełne zasady, wyjątki dla wysłanych zleceń, treści i kopii u dostawców
+zawierają Załącznik 1 i § 9 oraz § 12 <a href="dpa.html">Umowy powierzenia</a>.</p>
+
+<h2>5. Odbiorcy i lokalizacje</h2>
+<ul>
+<li><strong>Meta Platforms Ireland Ltd.</strong> jest odrębnym administratorem danych na
+swojej platformie. Wymieniamy z Meta dane przy łączeniu konta, odbiorze komentarzy i wiadomości
+oraz wysyłaniu odpowiedzi.</li>
+<li><strong>Resend</strong> (Plus Five Five, Inc., USA) obsługuje
+logowanie i inne wiadomości IRIS oraz wiadomości klientów, adresy odbiorców, tematy, treści
+i zdarzenia doręczenia. AWS jest dalszym dostawcą infrastruktury Resend, nie hostingiem
+zamawianym bezpośrednio przez IRIS.</li>
+<li><strong>Cloudflare</strong> (Cloudflare, Inc., USA) zapewnia proxy, TLS, DNS, Tunnel,
+cache publicznych obrazów i Access dla operatora. Kończy TLS i widzi przesyłane dane, IP,
+pełne ścieżki, formularze, webhooki i ciasteczka. Jego globalna sieć nie jest ograniczona
+w tym projekcie do EOG.</li>
+<li><strong>OVH Sp. z o.o.</strong> z Wrocławia (grupa OVHcloud) utrzymuje aplikację i bazę PostgreSQL: OVHcloud, VPS,
+Francja (EOG). Ruch do aplikacji przechodzi przez Cloudflare. OVHcloud obsługuje też
+skrzynkę i przekierowania poczty operatora; OVHcloud podaje, że przechowuje e-maile wyłącznie w swoich centrach danych
+w Europie.</li>
+<li><strong>Stripe Payments Europe, Limited</strong> (Irlandia) obsługuje własne rozliczenia
+klienta IRIS. Dostaje e-mail, NIP, identyfikator konta i metadane zakupu, w tym liczby
+kontaktów objętych blokiem; Checkout zbiera dane płatnicze, nazwę i adres. Nie wysyłamy danych
+poszczególnych subskrybentów do Stripe. Stripe przetwarza te dane częściowo na polecenie
+Operatora, a częściowo jako odrębny administrator, na przykład przy wykrywaniu oszustw
+i obowiązkach przeciwdziałania praniu pieniędzy. Dla tego zakresu nie jest podwykonawcą
+danych powierzonych z Umowy. Dla pierwszych klientów właściciel wystawia fakturę VAT ręcznie
+na podstawie płatności Stripe.</li>
+<li><strong>GitHub Pages</strong> (GitHub, Inc., USA) utrzymuje publiczne strony prawne.
+GitHub zapisuje adres IP każdego odwiedzającego ze względów bezpieczeństwa i przechowuje go
+według własnych zasad. Upoważniony operator uzyskuje dostęp w zakresie wsparcia i utrzymania;
+Tailscale służy administracji hostem i według dokumentacji nie przenosi danych klientów.</li>
+<li>Organy publiczne mogą otrzymać dane, gdy wymaga tego prawo. Biuro rachunkowe, doradca
+podatkowy lub prawnik mogą otrzymać dane potrzebne do rozliczeń albo do obrony roszczeń, gdy
+Operator korzysta z ich usług.</li>
+</ul>
+<p><a href="subprocessors.html">Lista podwykonawców wersja 3</a> podaje usługę, dane
+i lokalizację dla poszczególnych dostawców. Dla operatora nie każdy odbiorca jest dalszym
+podmiotem przetwarzającym dane klienta. Operator administruje serwerem przez Tailscale. IRIS nie tworzy dziś kopii bazy danych
+u innych dostawców. Dostawcy przechowują własne logi i kopie według swoich zasad.</p>
+
+<h2>6. Przekazywanie poza EOG</h2>
+<p>Sama baza we Francji nie oznacza, że wszystkie dane pozostają w EOG. Dane trafiają poza
+EOG w tych przypadkach:</p>
+<ul>
+<li><strong>Resend</strong>: IRIS wysyła pocztę z regionu AWS eu-west-1 (Irlandia), ale
+Resend prowadzi główne przetwarzanie w USA, w tym dane konta i metadane. Podstawą są
+standardowe klauzule umowne UE (decyzja Komisji 2021/914, moduł 2, a przy danych
+powierzonych przez klienta moduł 3) z umowy powierzenia Resend. Resend podaje też, że
+przestrzega EU-U.S. Data Privacy Framework.</li>
+<li><strong>Cloudflare</strong> działa globalnie, a ruch może przejść przez serwery poza EOG.
+Cloudflare podaje, że przestrzega Data Privacy Framework; gdy ten tryb nie obejmuje
+przekazania, umowa powierzenia Cloudflare stosuje standardowe klauzule umowne UE (moduł 2
+lub 3).</li>
+<li><strong>Stripe</strong> przekazuje dane do Stripe, LLC w USA. Podstawą są standardowe
+klauzule umowne UE z umowy powierzenia Stripe, a Stripe, LLC podaje, że przestrzega
+EU-U.S. Data Privacy Framework.</li>
+<li><strong>GitHub</strong> przetwarza dane odwiedzin w USA. GitHub podaje, że przestrzega
+EU-U.S. Data Privacy Framework i stosuje standardowe klauzule umowne UE.</li>
+</ul>
+<p>Serwer OVHcloud jest we Francji (EOG), a skrzynkę OVHcloud według własnej deklaracji
+przechowuje w Europie. Meta Platforms Ireland Ltd. odpowiada za przekazania w swojej platformie jako odrębny administrator.</p>
+<p>Informację o właściwych zabezpieczeniach i możliwość uzyskania ich kopii zapewnia kontakt
+w części 1, z ochroną tajemnic i praw innych osób. Akceptacja polityki nie zastępuje
+wymaganej podstawy przekazania ani zgody na marketing.</p>
+
+<h2>7. Odłączenie, deautoryzacja i usuwanie konta</h2>
+<p>Odłączenie konta Instagram w IRIS usuwa połączenie, zaszyfrowany token i zapisy techniczne
+tego konta: otrzymane powiadomienia, kolejkę wiadomości, wykonania automatyzacji oraz historię
+wywołań Meta i stanów połączenia. Wstrzymuje też kampanie tego konta. Nie usuwa konta IRIS,
+kontaktów, rozmów, zgód, kampanii, szablonów ani rozliczeń.</p>
+<p><strong>Usunięcie IRIS w ustawieniach Instagrama nie usuwa dziś danych zapisanych
+w IRIS, także tokena.</strong> Meta zawiadamia wtedy IRIS, a IRIS oznacza konto jako wyłączone
+i przestaje z niego wysyłać oraz pobierać komentarze. Aby usunąć dane, klient odłącza konto
+w IRIS, usuwa konto IRIS albo wysyła żądanie usunięcia danych przez Meta. Żądanie usunięcia
+przez Meta usuwa połączenie ze wskazanym kontem Instagram, token i zapisy techniczne, tak jak
+odłączenie; nie usuwa kontaktów, kampanii ani konta IRIS. Szczegóły podaje strona
+<a href="../data-deletion.html">Usuwanie danych</a>.</p>
+<p>Usunięcie konta IRIS jest odrębną czynnością. Najpierw przygotowywany jest eksport,
+dostępny przez 24 godziny; pobranie nie jest warunkiem usunięcia. Sekwencja kończy połączenia
+i usługi oraz usuwa dane konta. DPA przewiduje 30 dni, z wyjątkami dla zdarzeń pocztowych,
+eksportu i potwierdzeń opisanymi wyżej. Dane własne wymagane do rozliczeń mogą pozostać dłużej.
+Usuwanie przebiega krokami, a IRIS zapisuje każdy wykonany krok. Po błędzie IRIS ponawia
+usuwanie od zapisanego kroku. Gdy ponowienia się wyczerpią, ekran usuwania konta pokazuje błąd
+i pozwala ponowić usuwanie; można też napisać na privacy@irisapp.pl.</p>
+<p>Gdy Meta nie odpowiada albo własny limit wywołań IRIS jest wyczerpany, odłączenie i tak
+następuje od razu, a wyłączenie powiadomień u Meta IRIS wysyła później. Do tego czasu zadanie
+w kolejce przechowuje identyfikator konta Instagram i zaszyfrowany token, także po usunięciu
+konta IRIS. IRIS ponawia tę próbę zwykle przez kilka godzin: do 8 prób w odstępach od 5 minut
+do godziny. Gdy wywołania wstrzymuje wyłącznik lub zabezpieczenie po stronie IRIS, zadanie
+czeka do ich zwolnienia. Zapis zadania IRIS usuwa najpóźniej 7 dni po jego zakończeniu:
+24 godziny po wykonaniu albo 7 dni po odrzuceniu. Zapis odłączonego konta (identyfikator
+Instagram i daty) zostaje do skutecznego wyłączenia powiadomień i 90 dni po nim.</p>
+<p>IRIS nie tworzy dziś kopii zapasowych bazy danych, więc usunięte dane nie zostają
+w kopiach. Gdy kopie powstaną, ta polityka poda okres ich przechowywania. Obrazy mogą
+pozostać w cache Cloudflare i przeglądarek do roku, bo tak długo pozwala na to nagłówek
+cache; IRIS nie usuwa tych kopii. Wiadomości w skrzynce Operator usuwa ręcznie po okresach
+z części 3, a logi znikają, gdy nadpisują je nowsze. Dostawcy usuwają dane w swoich systemach
+według własnych zasad.</p>
+
+<h2>8. Cookies, pamięć przeglądarki i pomiar kliknięć</h2>
+<p><a href="cookies.html">Informacja o cookies i pamięci przeglądarki</a> wymienia nazwy,
+cele i czasy. Zbadany kod aplikacji nie zawiera zewnętrznej analityki ani reklamowych skryptów
+śledzących. Nie oznacza to braku logów dostawców ani pomiaru kliknięć w wiadomościach.</p>
+<p>IRIS liczy kliknięcia w linki e-mail dla kontaktu: link, pierwszy i ostatni czas oraz
+liczbę kliknięć, bez IP i identyfikatora przeglądarki w rekordzie kliknięcia. Śledzenie otwarć
+i kliknięć po stronie Resend jest wyłączone; przekierowania IRIS nadal zliczają kliknięcia.
+Dotyczy to linków w wysyłkach do kontaktów i w e-mailu z zamówionym materiałem. Link prowadzi
+najpierw pod adres IRIS ze ścieżką /r/, a IRIS od razu przekierowuje na adres docelowy. IRIS nie
+mierzy otwarć wiadomości. Nie liczy wejścia, które wygląda na automat (np. skaner poczty
+lub podgląd linku) ani wejścia w ciągu 3 sekund od wysyłki; przekierowanie działa zawsze.</p>
+<p>Link w wiadomości zawiera identyfikator wysyłki, więc IRIS przypisuje kliknięcie do
+kontaktu. Pomiar nie używa cookies. Dane kliknięć IRIS przetwarza
+na polecenie twórcy, który jest ich administratorem i określa podstawę prawną (część 4).
+Kliknięcia usuwa się razem z kontaktem.</p>
+
+<h2>9. Prawa i kontakt</h2>
+<p>W granicach RODO można żądać dostępu, sprostowania, usunięcia, ograniczenia i przeniesienia
+danych. Wobec przetwarzania opartego na uzasadnionym interesie można wnieść sprzeciw.
+Jeżeli podstawą jest zgoda, można ją wycofać bez wpływu na zgodność wcześniejszego przetwarzania.
+Skargę można wnieść do Prezesa Urzędu Ochrony Danych Osobowych (UODO) lub innego właściwego
+organu nadzorczego. Żądania kieruje się na kontakt z części 1; identyfikację sprawdzamy
+proporcjonalnie, bez żądania zbędnych dokumentów. Odpowiedź następuje bez zbędnej zwłoki,
+zasadniczo w miesiąc, a o uzasadnionym przedłużeniu informujemy zgodnie z RODO.
+Odpowiadamy zwykle w ciągu 2 dni roboczych.</p>
+<p>Osoba komentująca lub subskrybent kieruje żądanie w pierwszej kolejności do twórcy,
+który jest administratorem. IRIS przekazuje otrzymane żądanie właściwemu klientowi i pomaga
+mu w realizacji na podstawie Umowy powierzenia. Wypisanie z wiadomości blokuje dalszą
+wysyłkę w danym koncie; nie jest automatycznym usunięciem wszystkich danych.</p>
+<p>Automatycznie dopasowujemy komentarze do reguł kampanii, które ustawia klient, i stosujemy
+limity oraz zabezpieczenia wysyłki i logowania. IRIS nie podejmuje decyzji opartych wyłącznie
+na zautomatyzowanym przetwarzaniu, które wywołują wobec kogoś skutki prawne lub w podobny
+sposób istotnie na kogoś wpływają (art. 22 RODO).</p>
+<p>Najbliżej takiej decyzji jest automatyczne wstrzymanie wysyłki z konta klienta. IRIS
+sprawdza e-maile wysłane z konta w ostatnich 30 dniach (bez wysyłek testowych), gdy jest ich
+co najmniej 200. Wysyłka zostaje wstrzymana, gdy odrzucenia osiągną 1% tych e-maili
+(i co najmniej 5) albo skargi odbiorców osiągną 0,2% (i co najmniej 3). Wstrzymanie zatrzymuje e-maile oraz odpowiedzi i wiadomości
+na Instagramie z tego konta; konto IRIS, dane i połączenie z Instagramem zostają. Użytkownicy
+konta dostają e-mail z powodem. Wysyłkę wznawia człowiek: Operator, po sprawdzeniu listy
+razem z klientem. Klient może przedstawić swoje stanowisko, zakwestionować wstrzymanie
+i zażądać sprawdzenia przez człowieka: wystarczy odpowiedzieć na ten e-mail albo napisać na
+support@irisapp.pl. Odpowiadamy zwykle w ciągu 2 dni roboczych.</p>
+
+<h2>10. Zmiany i powiązane dokumenty</h2>
+<p>Ta informacja opisuje przetwarzanie; nie wymaga zgody przez dalsze korzystanie.
+Istotne zmiany celów lub zakresu wymagają odpowiedniej informacji przed nowym przetwarzaniem.
+Data i numer projektu są na początku. O istotnej zmianie informujemy klientów e-mailem na
+adres konta przed jej wejściem w życie. Poprzednie wersje udostępniamy na żądanie wysłane
+na privacy@irisapp.pl. Zobacz również <a href="terms.html">Regulamin</a>,
+<a href="dpa.html">Umowę powierzenia</a> i <a href="cookies.html">cookies</a>.</p>
+
+<footer>IRIS &middot; <a href="privacy.html">Prywatność</a> &middot; <a href="terms.html">Regulamin</a> &middot; <a href="cookies.html">Cookies</a> &middot; <a href="dpa.html">Umowa powierzenia</a> &middot; <a href="subprocessors.html">Podwykonawcy</a> &middot; <a href="../data-deletion.html">Usuwanie danych</a></footer>
+</main></body></html>

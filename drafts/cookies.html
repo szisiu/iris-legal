@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cookies i pamięć przeglądarki: IRIS</title><link rel="stylesheet" href="../style.css"></head>
+<body><main>
+<p><strong>Projekt do przeglądu prawnego. Nie publikować.</strong></p>
+<h1>Cookies i pamięć przeglądarki</h1>
+<p class="meta">IRIS &middot; Wersja 3 &middot; projekt z 8 listopada 2026</p>
+<p><a href="#en" lang="en">English translation below</a>. Polski tekst jest wiążący.
+Miejsca w nawiasach wymagają sprawdzenia przed publikacją.</p>
+<h2>1. Zakres i operator</h2>
+<p>Informacja obejmuje cookies i pamięć przeglądarki w aplikacji IRIS (panel, strony logowania,
+publiczne strony zapisu i panel operatora) oraz cookies dostawców, z których IRIS korzysta
+przy tych stronach. Nie obejmuje strony głównej irisapp.pl, która jest osobnym projektem.
+Operator jest wskazany w <a href="terms.html">Regulaminie</a>, § 1, i w
+<a href="privacy.html">Polityce prywatności</a>. Panel, publiczne strony zapisu, panel operatora
+i publiczne strony prawne mają różne funkcje; nie każda wizyta ustawia wszystkie cookies.</p>
+
+<h2>2. Cookies ustawiane przez kod IRIS</h2>
+<p>W tabeli podajemy czas ważności cookie w przeglądarce, nie czas przechowywania powiązanego
+rekordu w bazie. Wszystkie cookies IRIS mają atrybut HttpOnly (JavaScript ich nie odczyta)
+i SameSite=Lax (przeglądarka nie dołącza ich do żądań z innych witryn, poza zwykłym przejściem
+z linku). Poza środowiskiem deweloperskim mają też atrybut Secure. Sesja nazywa się wtedy
+<code>__Host-iris_session</code>, ma ścieżkę / i nie ma atrybutu Domain.</p>
+<div class="table-wrap"><table>
+<tr><th>Nazwa</th><th>Kto ustawia i zakres</th><th>Cel i zawartość</th><th>Czas</th><th>Ściśle niezbędne?</th></tr>
+<tr><td>__Host-iris_session; iris_session tylko w trybie deweloperskim</td><td>IRIS, moduł logowania; ścieżka /</td><td>Rozpoznanie zalogowanej sesji. Cookie zawiera token, w bazie jest jego skrót</td><td>Do 7 dni od logowania (czas ustawia Operator w konfiguracji); usuwane wcześniej przy wylogowaniu lub unieważnieniu sesji</td><td>Tak, uwierzytelnianie</td></tr>
+<tr><td>iris_signin</td><td>IRIS, formularz logowania; /sign-in</td><td>Adres e-mail i czas żądania do widoku wysłanego linku oraz ograniczenia ponownej wysyłki; kodowanie nie jest szyfrowaniem</td><td>Do 15 minut, tyle co ważność linku logowania; usuwane po skutecznym użyciu linku</td><td>Tak, obsługa zażądanego logowania</td></tr>
+<tr><td>iris_capture</td><td>IRIS, strona zapisu; ścieżka właściwego linku zapisu</td><td>Zachowanie wpisanego e-maila oraz stanu pól dostarczenia i marketingu po odmowie formularza; kodowane, nie szyfrowane</td><td>Do 10 minut; usuwane wcześniej przez obsługę widoku po przekierowaniu</td><td>Tak, dokończenie formularza. Zapamiętany stan pól nie jest zgodą: zgodę zapisuje IRIS dopiero po przyjęciu formularza</td></tr>
+<tr><td>iris_deletion_receipt</td><td>IRIS, usuwanie konta; /settings/delete</td><td>Podpisany identyfikator usunięcia i wygaśnięcie; dostęp do stanu, potwierdzenia i eksportu, gdy sesja konta znika</td><td>7 dni; dostępność pliku eksportu pozostaje odrębnie ograniczona do 24 godzin</td><td>Tak, obsługa zażądanego usunięcia</td></tr>
+<tr><td>iris_ops</td><td>IRIS, panel operatora; /ops</td><td>Odrębna sesja upoważnionego operatora; nie jest sesją klienta ani cookie Cloudflare Access</td><td>Cookie do 8 godzin; sesja serwerowa najwyżej 8 godzin i 60 minut bezczynności; wcześniej wylogowanie</td><td>Tak, kontrola dostępu operatora</td></tr>
+<tr><td>iris_connect_next</td><td>IRIS, połączenie Instagram; ścieżka /connect/instagram</td><td>Dopuszczona wewnętrzna ścieżka powrotu z połączenia Instagram, np. ustawienia lub edytor kampanii</td><td>Do 15 minut; odczyt przy powrocie usuwa cookie</td><td>Tak, dokończenie zażądanego połączenia</td></tr>
+<tr><td>iris_resumed</td><td>IRIS, wznowienie automatyzacji; /</td><td>Stała flaga 1, bez adresu czy treści; jednokrotny komunikat po wznowieniu</td><td>Do 60 sekund; następny pełny widok odczytuje i usuwa</td><td>Tak, jednorazowy komunikat o wyniku operacji, o którą prosi użytkownik</td></tr>
+<tr><td>iris_ig_taken</td><td>IRIS, powrót z Instagram; /settings/instagram</td><td>Własna nazwa konta Instagram i podpis związany z sesją; komunikat, które konto nie może zostać połączone, bez danych innego klienta</td><td>Do 5 minut; widok ustawień odczytuje i usuwa</td><td>Tak, wyjaśnienie, dlaczego żądane połączenie konta nie doszło do skutku</td></tr>
+<tr><td>iris_billing_live</td><td>IRIS, rozliczenia; /settings/billing</td><td>Podpis powiązany z sesją, bez danych osobowych; oznacza, że ekran rozliczeń ma jednorazowo pokazać komunikat, że subskrypcja już działa</td><td>Do 5 minut; ekran rozliczeń odczytuje i usuwa</td><td>Tak, komunikat o wyniku żądanego zamówienia planu</td></tr>
+</table></div>
+
+<p><strong>Ochrona CSRF.</strong> IRIS nie ustawia osobnego cookie CSRF. Token jest wyliczany
+z identyfikatora sesji, wstawiany do formularza lub nagłówka żądania i ważny, dopóki trwa ta
+sesja. Poza cookies z tabeli IRIS nie ustawia żadnych innych cookies.</p>
+<p><strong>Cookies ściśle niezbędne.</strong> Każde cookie z tabeli jest potrzebne, aby wykonać
+funkcję, o którą prosi użytkownik: zalogować się, dokończyć formularz zapisu, połączyć konto
+Instagram, zamówić plan lub usunąć konto. Dlatego IRIS nie pyta o zgodę na te cookies i nie
+pokazuje banera zgody (art. 399 Prawa komunikacji elektronicznej). Cookies <em>iris_resumed</em>,
+<em>iris_ig_taken</em> i <em>iris_billing_live</em> przenoszą tylko jednorazowy komunikat o wyniku
+takiej funkcji. IRIS nie używa cookies do analityki, reklamy ani śledzenia. Gdyby je wprowadził,
+najpierw zmieni tę informację i zapyta o zgodę.</p>
+
+<h2>3. Pamięć przeglądarki i cache</h2>
+<p>Na stronach logowania, w panelu i w panelu operatora działa biblioteka HTMX, która używa
+<code>sessionStorage</code>. Publiczne strony zapisu i wypisu jej nie ładują. Klucz
+<code>htmx-current-path-for-history</code> przechowuje bieżącą ścieżkę wraz z parametrami
+zapytania dla nawigacji. Klucz <code>htmx:sessionStorageTest</code> służy testowi dostępności
+pamięci i jest od razu usuwany. To dane karty przeglądarki: znikają po jej zamknięciu, choć ustawienie przywracania sesji
+w przeglądarce może je zachować.</p>
+<p>Konfiguracja IRIS ustawia <code>historyCacheSize=0</code>, więc nie tworzy nowych migawek
+stron w <code>htmx-history-cache</code>; biblioteka usuwa ten klucz przy zapisie historii.
+Starsza wersja mogła przechowywać migawki z danymi kontaktów. Odpowiedź na wylogowanie
+wysyła <code>Clear-Site-Data: "cache", "storage"</code>, aby przeglądarka usunęła także
+pozostałości. Wykonanie zależy od obsługi nagłówka przez przeglądarkę i nie usuwa kopii poza urządzeniem.
+Nagłówek nie ma dyrektywy „cookies”; cookie sesji IRIS wygasza osobno.</p>
+<p>Skrypty IRIS nie zapisują danych w <code>localStorage</code> ani IndexedDB. Prywatne widoki panelu i operatora oraz publiczne odpowiedzi z danymi osoby otrzymują
+<code>Cache-Control: private, no-store</code>. Publiczne obrazy są inne: mają roczny nagłówek
+cache i mogą trafić do pamięci Cloudflare oraz przeglądarki. Zwykła historia nawigacji,
+plik pobrany przez użytkownika i kopia obrazu nie znikają automatycznie z każdej lokalizacji
+wskutek usunięcia kontaktu.</p>
+
+<h2>4. Dostawcy zewnętrzni i analityka</h2>
+<p><strong>Cloudflare</strong> pośredniczy w ruchu do panelu (serwer pośredniczący i tunel) i chroni
+panel operatora usługą Access. Z dokumentacji Cloudflare
+(<a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/">Cloudflare Cookies</a>)
+wynika, że jego cookies są związane z konkretnymi funkcjami. IRIS nie włącza funkcji, które
+ustawiają cookies zwykłym odwiedzającym: ochrony przed botami (<code>__cf_bm</code>), wyzwań
+(<code>cf_clearance</code>), reguł limitowania z opcją unikalnego odwiedzającego
+(<code>_cfuvid</code>) ani równoważenia obciążenia (<code>__cflb</code>). Klient, odbiorca
+wiadomości i osoba odwiedzająca stronę zapisu nie dostają więc cookies Cloudflare. Gdyby
+Operator włączył taką funkcję, najpierw zmieni tę informację.</p>
+<p>Cookies Cloudflare Access dostają tylko osoby, które logują się do panelu operatora
+(<code>/ops</code>). Według dokumentacji Cloudflare
+(<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/">Authorization cookie</a>)
+są to cookies wymagane do działania Access, nieużywane do śledzenia ani analityki:</p>
+<div class="table-wrap"><table>
+<tr><th>Nazwa</th><th>Gdzie</th><th>Cel</th><th>Czas</th></tr>
+<tr><td>CF_Authorization</td><td>panel.irisapp.pl i irisapp.cloudflareaccess.com</td><td>Token potwierdzający, że operator zalogował się i ma dostęp</td><td>Do końca sesji Access, u nas 24 godziny</td></tr>
+<tr><td>CF_AppSession</td><td>panel.irisapp.pl</td><td>Ochrona CSRF dla aplikacji Access</td><td>24 godziny</td></tr>
+<tr><td>CF_Session</td><td>irisapp.cloudflareaccess.com</td><td>Ochrona CSRF na domenie logowania Access</td><td>4 godziny</td></tr>
+<tr><td>CF_Device</td><td>irisapp.cloudflareaccess.com</td><td>Zapobieganie nadużyciom przy logowaniu jednorazowym kodem</td><td>30 dni</td></tr>
+</table></div>
+<p><strong>Stripe.</strong> Zamówienie planu i portal rozliczeń to strony prowadzone przez Stripe.
+IRIS przenosi tam klienta przekierowaniem i nie ładuje skryptów Stripe na własnych stronach.
+Cookies na stronach Stripe ustawia Stripe jako odrębny administrator, według własnej
+<a href="https://stripe.com/cookies-policy/legal">polityki cookies</a>. IRIS ich nie ustawia
+i nie ma do nich dostępu. To samo dotyczy strony Instagrama, na którą klient przechodzi, aby
+połączyć konto: cookies ustawia Meta.</p>
+<p>Publiczne strony prawne to statyczny HTML bez skryptów, które zapisują cookies. Hostuje je
+GitHub Pages i nie ustawiamy tam żadnych cookies. Dostawca hostingu może zapisywać adresy IP
+w logach, według własnej polityki prywatności.</p>
+<p>Kod aplikacji i dołączone skrypty nie zawierają zewnętrznej analityki ani reklamowych
+skryptów śledzących. IRIS nie ładuje zasobów z zewnętrznych serwerów: polityka bezpieczeństwa
+treści (CSP) dopuszcza obrazy, skrypty i style tylko z własnej domeny. Dostawcy mogą prowadzić
+logi serwerów.</p>
+<p>IRIS mierzy kliknięcia w linki w wiadomościach e-mail przez przekierowanie: link prowadzi
+najpierw na adres IRIS, który zapisuje kliknięcie przy kontakcie i przekierowuje dalej.
+Pomiar nie zapisuje niczego w urządzeniu odbiorcy. Rekord kliknięcia nie zawiera adresu IP ani
+rodzaju przeglądarki; IRIS odczytuje rodzaj przeglądarki tylko po to, aby nie liczyć kliknięć
+automatycznych skanerów. Śledzenie otwarć i kliknięć po stronie Resend jest wyłączone.
+Informację o pomiarze przekazuje odbiorcy twórca, w swojej informacji o przetwarzaniu danych.</p>
+
+<h2>5. Ustawienia i pytania</h2>
+<p>Przeglądarka pozwala przeglądać, ograniczać i usuwać cookies oraz dane witryny. Usunięcie
+cookie z tabeli może wylogować albo przerwać zapis, połączenie lub dostęp do potwierdzenia
+usunięcia konta. IRIS nie pokazuje banera zgód, bo nie używa cookies, które wymagałyby zgody.
+Dalsze korzystanie z IRIS nie jest zgodą na żadną technologię. Pytania w sprawie cookies:
+privacy@irisapp.pl. Kontakt i prawa opisuje <a href="privacy.html">Polityka prywatności</a>;
+warunki usługi <a href="terms.html">Regulamin</a>.</p>
+
+<section lang="en" id="en">
+<p><strong>Draft for legal review. Do not publish.</strong></p>
+<h1>Cookies and browser storage</h1>
+<p class="meta">IRIS &middot; Version 3 &middot; draft of 8 November 2026</p>
+<p>This is a translation; the Polish text above governs. Bracketed slots require verification.</p>
+<h2>1. Scope and operator</h2>
+<p>This notice covers cookies and browser storage in the IRIS application (the panel, the
+sign-in pages, the public sign-up pages and the operator panel) and the cookies of the providers
+that IRIS uses on these pages. It does not cover the main page irisapp.pl, which is a separate
+project. The Operator is named in the <a href="terms-en.html">Terms</a>, § 1, and in the
+<a href="privacy-en.html">Privacy Policy</a>. The panel, the public sign-up pages, the operator
+panel and the public legal pages serve different purposes; not every visit sets every cookie.</p>
+
+<h2>2. Cookies set by IRIS code</h2>
+<p>The table gives the lifetime of the cookie in the browser, not the retention of the related
+database record. Every IRIS cookie has the HttpOnly attribute (JavaScript cannot read it) and
+SameSite=Lax (the browser does not attach it to requests from other sites, except when you
+follow a link). Outside the development environment they also have the Secure attribute. The
+session is then named <code>__Host-iris_session</code>, with path / and no Domain attribute.</p>
+<div class="table-wrap"><table>
+<tr><th>Name</th><th>Setter and scope</th><th>Purpose and contents</th><th>Lifetime</th><th>Strictly necessary?</th></tr>
+<tr><td>__Host-iris_session; iris_session in development only</td><td>IRIS sign-in module; path /</td><td>Recognizes the signed-in session. Cookie holds a token; the database holds its hash</td><td>Up to 7 days from sign-in (the Operator sets the duration in the configuration); removed earlier on sign-out or when the session is ended</td><td>Yes, authentication</td></tr>
+<tr><td>iris_signin</td><td>IRIS sign-in form; /sign-in</td><td>Email and request time for the sent-link page and resend cooldown; encoding is not encryption</td><td>Up to 15 minutes, as long as the sign-in link is valid; cleared after the link is used</td><td>Yes, requested sign-in flow</td></tr>
+<tr><td>iris_capture</td><td>IRIS capture page; the relevant capture-link path</td><td>Preserves entered email and delivery/marketing checkbox state after a refused form; encoded, not encrypted</td><td>Up to 10 minutes; cleared earlier by the redirected view handling</td><td>Yes, completing the form. The remembered state of the boxes is not consent: IRIS records consent only when it accepts the form</td></tr>
+<tr><td>iris_deletion_receipt</td><td>IRIS account deletion; /settings/delete</td><td>Signed deletion identifier and expiry; status, proof and export access after the account session disappears</td><td>7 days; the export file has a separate 24-hour availability limit</td><td>Yes, requested deletion handling</td></tr>
+<tr><td>iris_ops</td><td>IRIS operator panel; /ops</td><td>Separate authorized-operator session; not a customer session or Cloudflare Access cookie</td><td>Cookie up to 8 hours; server session at most 8 hours and 60 minutes idle; earlier sign-out</td><td>Yes, operator access control</td></tr>
+<tr><td>iris_connect_next</td><td>IRIS Instagram connection; path /connect/instagram</td><td>Allowed internal return path after Instagram connection, such as settings or campaign editor</td><td>Up to 15 minutes; read and cleared on return</td><td>Yes, completing a requested connection</td></tr>
+<tr><td>iris_resumed</td><td>IRIS automation resumption; /</td><td>Constant flag 1, no address/content; one-off confirmation after resumption</td><td>Up to 60 seconds; next full page reads and clears it</td><td>Yes, a one-off message about the result of an operation that the user asked for</td></tr>
+<tr><td>iris_ig_taken</td><td>IRIS Instagram return; /settings/instagram</td><td>Own Instagram handle and session-bound signature; identifies the refused account without another customer's data</td><td>Up to 5 minutes; settings view reads and clears it</td><td>Yes, explains why the requested account connection did not succeed</td></tr>
+<tr><td>iris_billing_live</td><td>IRIS billing; /settings/billing</td><td>A signature tied to the session, with no personal data; marks that the billing screen shows a one-off message that a subscription is already active</td><td>Up to 5 minutes; the billing screen reads and clears it</td><td>Yes, a message about the result of a plan order that the user asked for</td></tr>
+</table></div>
+
+<p><strong>CSRF protection.</strong> IRIS sets no separate CSRF cookie. The token is derived
+from the session identifier, placed in a form or a request header, and valid as long as that
+session lasts. IRIS sets no cookies other than those in the table.</p>
+<p><strong>Strictly necessary cookies.</strong> Every cookie in the table is needed to perform
+a function that the user asked for: to sign in, to finish a sign-up form, to connect an
+Instagram account, to order a plan or to delete an account. For this reason IRIS does not ask
+for consent to these cookies and shows no consent banner (art. 399 of the Polish Electronic
+Communications Law). The cookies <em>iris_resumed</em>, <em>iris_ig_taken</em> and
+<em>iris_billing_live</em> carry only a one-off message about the result of such a function.
+IRIS uses no cookies for analytics, advertising or tracking. If it introduced any, it would
+first change this notice and ask for consent.</p>
+
+<h2>3. Browser storage and cache</h2>
+<p>The sign-in pages, the panel and the operator panel run the HTMX library, which uses
+<code>sessionStorage</code>. The public sign-up and unsubscribe pages do not load it. The key <code>htmx-current-path-for-history</code>
+contains the current path and query parameters for navigation.
+<code>htmx:sessionStorageTest</code> tests storage availability and is removed immediately.
+These belong to the browser tab: they disappear when the tab is closed, although a
+session-restore setting of the browser can keep them.</p>
+<p>IRIS sets <code>historyCacheSize=0</code>, so it creates no new page snapshots in
+<code>htmx-history-cache</code>; the library removes that key on history save. Older versions
+could store page snapshots containing contact data. Sign-out sends
+<code>Clear-Site-Data: "cache", "storage"</code> to remove residual data as well. Execution
+depends on browser support, and it does not delete copies outside the device. The header has no
+“cookies” directive; IRIS expires the session cookie separately.</p>
+<p>IRIS scripts do not write <code>localStorage</code> or IndexedDB. Private
+panel/operator views and public responses containing a person's data receive
+<code>Cache-Control: private, no-store</code>. Public images are different: they carry a
+one-year cache header and may be cached by Cloudflare and browsers. Ordinary navigation
+history, downloaded files and image copies are not automatically removed everywhere by
+contact erasure.</p>
+
+<h2>4. External providers and analytics</h2>
+<p><strong>Cloudflare</strong> proxies traffic to the panel (a reverse proxy and a tunnel) and
+protects the operator panel with Access. Cloudflare's documentation
+(<a href="https://developers.cloudflare.com/fundamentals/reference/policies-compliances/cloudflare-cookies/">Cloudflare Cookies</a>)
+ties its cookies to specific features. IRIS does not turn on the features that set cookies for
+ordinary visitors: bot protection (<code>__cf_bm</code>), challenges
+(<code>cf_clearance</code>), rate limiting rules with the unique-visitor option
+(<code>_cfuvid</code>) and load balancing (<code>__cflb</code>). A customer, a message
+recipient or a visitor of a sign-up page therefore gets no Cloudflare cookie. If the Operator
+turned on such a feature, it would first change this notice.</p>
+<p>Only people who sign in to the operator panel (<code>/ops</code>) get Cloudflare Access
+cookies. According to Cloudflare's documentation
+(<a href="https://developers.cloudflare.com/cloudflare-one/access-controls/applications/http-apps/authorization-cookie/">Authorization cookie</a>)
+they are required for Access to work and are not used for tracking or analytics:</p>
+<div class="table-wrap"><table>
+<tr><th>Name</th><th>Where</th><th>Purpose</th><th>Lifetime</th></tr>
+<tr><td>CF_Authorization</td><td>panel.irisapp.pl and irisapp.cloudflareaccess.com</td><td>A token that shows the operator signed in and has access</td><td>As long as the Access session, here 24 hours</td></tr>
+<tr><td>CF_AppSession</td><td>panel.irisapp.pl</td><td>CSRF protection for the Access application</td><td>24 hours</td></tr>
+<tr><td>CF_Session</td><td>irisapp.cloudflareaccess.com</td><td>CSRF protection on the Access sign-in domain</td><td>4 hours</td></tr>
+<tr><td>CF_Device</td><td>irisapp.cloudflareaccess.com</td><td>Prevents abuse of the one-time code sign-in</td><td>30 days</td></tr>
+</table></div>
+<p><strong>Stripe.</strong> Ordering a plan and the billing portal are pages run by Stripe. IRIS
+sends the customer there by redirect and loads no Stripe script on its own pages. Stripe sets
+cookies on its pages as a separate controller, under its own
+<a href="https://stripe.com/cookies-policy/legal">cookie policy</a>. IRIS does not set them and
+has no access to them. The same applies to the Instagram page that the customer opens to
+connect an account: Meta sets the cookies.</p>
+<p>The public legal pages are static HTML with no script that writes cookies. They are hosted by
+GitHub Pages, and we set no cookies there. The hosting provider can record IP addresses in its
+logs, under its own privacy policy.</p>
+<p>The application code and bundled scripts contain no external analytics or advertising
+tracking scripts. IRIS loads no resources from outside servers: the content security policy
+(CSP) allows images, fonts, scripts and styles only from its own domain. Providers may keep
+server logs.</p>
+<p>IRIS measures clicks on links in e-mails through a redirect: the link first goes to an IRIS
+address, which records the click against the contact and redirects onward. The measurement
+stores nothing on the recipient's device. The click record holds no IP address and no browser
+type; IRIS reads the browser type only so as not to count clicks of automatic scanners.
+Resend's own open and click tracking is disabled. The creator tells the recipient about the
+measurement in the creator's privacy notice.</p>
+
+<h2>5. Settings and questions</h2>
+<p>Your browser lets you inspect, restrict and delete cookies/site data. Removing a
+cookie from the table can sign you out or interrupt a sign-up, a connection or access to the
+proof of account deletion. IRIS shows no consent banner, because it uses no cookies that would
+need consent. Continued use of IRIS is not consent to any technology. Questions about cookies:
+privacy@irisapp.pl. The <a href="privacy-en.html">Privacy Policy</a> covers contact and rights;
+the <a href="terms-en.html">Terms</a> cover the service.</p>
+
+</section>
+<footer>IRIS &middot; <a href="privacy.html">Prywatność</a> &middot;
+<a href="privacy-en.html" lang="en">Privacy</a> &middot; <a href="terms.html">Regulamin</a> &middot;
+<a href="terms-en.html" lang="en">Terms</a> &middot; <a href="subprocessors.html">Podwykonawcy</a></footer>
+</main></body></html>
