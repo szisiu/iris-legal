@@ -82,10 +82,8 @@ Administratora w Serwisie.</li>
 opartego na Regulaminie. Po wygaśnięciu Umowy stosuje się § 12.</li>
 <li>Odłączenie Instagrama ani usunięcie IRIS w ustawieniach Instagrama nie usuwają konta IRIS
 i nie kończą Umowy. Gdy Meta zawiadomi IRIS o usunięciu aplikacji, IRIS oznacza połączenie
-jako wyłączone i przestaje z niego wysyłać wiadomości oraz pobierać komentarze. Zaszyfrowany
-token dostępu zostaje wtedy w bazie do odłączenia konta w IRIS, do żądania usunięcia danych
-przez Meta albo do usunięcia konta IRIS; każda z tych dróg usuwa token
-(<a href="../data-deletion.html">Usuwanie danych</a>, punkty 2 do 5). Kontakty i kampanie
+jako wyłączone i przestaje z niego wysyłać wiadomości oraz pobierać komentarze. W tej samej
+operacji IRIS usuwa z bazy zaszyfrowany token dostępu tego połączenia. Kontakty i kampanie
 pozostają; ponowne połączenie umożliwia wznowienie obsługi.</li>
 </ol>
 
@@ -195,9 +193,10 @@ wykonywania ich praw określonych w rozdziale III RODO, w szczególności:
 <ol>
 <li>udostępnia w Serwisie eksport danych konta Administratora w zakresie opisanym w § 12 ust. 1;</li>
 <li>na polecenie Administratora usuwa dane wskazanej osoby z powiązanych rekordów kontaktu,
-rozmów, zgód, doręczeń, kliknięć i automatyzacji oraz z odnalezionych webhooków i zdarzeń
+rozmów, zgód, doręczeń i automatyzacji oraz z odnalezionych webhooków i zdarzeń
 pocztowych; unieważnia gotowe eksporty konta. Wpis blokady wysyłki pozostaje odłączony od
-kontaktu, w zakresie opisanym w Załączniku 1. Funkcja usunięcia kontaktu nie obejmuje
+kontaktu, w zakresie opisanym w Załączniku 1. Liczniki kliknięć nie wskazują odbiorcy ani
+wysyłki, więc pozostają bez zmian (Załącznik 1). Funkcja usunięcia kontaktu nie obejmuje
 pozostałych miejsc, w których mogą być dane tej osoby. Dla nich stosuje się poniższe zasady:
 <ol>
 <li>nazwę użytkownika w ustawieniach kampanii (lista pomijanych kont) i inne treści wpisane
@@ -248,9 +247,10 @@ dokonuje Administrator.</li>
 <h2>§ 12. Zwrot i usunięcie Danych po zakończeniu</h2>
 <ol>
 <li>Administrator może w każdej chwili pobrać w Serwisie eksport danych swojego konta,
-także bez akceptacji nowej wersji Umowy. Archiwum ZIP zawiera dziewięć plików danych:
+także bez akceptacji nowej wersji Umowy. Archiwum ZIP zawiera dziesięć plików danych:
 kontakty, zapisy zgód, blokady wysyłki, dziennik audytowy, kampanie, szablony e-mail,
-wysyłki zbiorcze, dane marki i rozliczenia, oraz plik README.txt. Nie obejmuje odrębnych
+wysyłki zbiorcze, dane marki, rozliczenia i ograniczenia treści nałożone przez IRIS, oraz
+plik README.txt. Nie obejmuje odrębnych
 zbiorów rozmów zapisu, doręczeń, odbiorców wysyłek, kliknięć, wykonań automatyzacji,
 zleceń wysyłki, surowych webhooków, zdarzeń pocztowych ani plików obrazów.
 Przed usunięciem konta Serwis przygotowuje ten eksport; plik jest dostępny przez 24 godziny.
@@ -265,7 +265,8 @@ pobrania.</li>
 rekordów konta. Podmiot przetwarzający usuwa Dane z bazy w ramach tej sekwencji, nie później
 niż w ciągu 30 dni od wygaśnięcia Umowy, z następującymi wyjątkami:
 <ol>
-<li>zdarzenia pocztowe bez identyfikatora konta pozostają do upływu 90 dni od otrzymania;</li>
+<li>zdarzenia pocztowe, których Serwis nie przypisał do konta, pozostają do upływu 90 dni
+od otrzymania;</li>
 <li>gotowy eksport pozostaje dostępny przez 24 godziny;</li>
 <li>potwierdzenie usunięcia konta pozostaje przez 12 miesięcy od zakończenia, a rejestr
 żądania usunięcia od Meta przez 12 miesięcy od otrzymania; niezakończone żądanie od Meta
@@ -273,9 +274,11 @@ nie jest usuwane w trakcie obsługi;</li>
 <li>Dane, których dalszego przechowywania wymaga prawo Unii lub państwa członkowskiego,
 są przechowywane wyłącznie w wymaganym zakresie i czasie.</li>
 </ol>
-Zdarzenia pocztowe z ppkt 1 zawierają adres odbiorcy i dane doręczenia, ale nie mają klucza
-konta, więc usunięcie konta ich dziś nie odnajduje; zadanie usuwające kasuje je po upływie
-tego okresu. Jest to znane ograniczenie Serwisu, a nie obowiązek przechowywania.
+Pozostałe zdarzenia pocztowe konta Serwis usuwa w ramach tej sekwencji, a zdarzenia, które
+nadejdą później i wskazują usunięte konto, nie są zapisywane. Zdarzenia pocztowe z ppkt 1
+zawierają adres odbiorcy i dane doręczenia, ale nie mają klucza konta, ponieważ nie wskazuje
+go samo zdarzenie, a w bazie nie ma rekordu doręczenia, który by je przypisał; usunięcie
+konta ich więc nie odnajduje, a zadanie usuwające kasuje je po upływie tego okresu. Jest to znane ograniczenie Serwisu, a nie obowiązek przechowywania.
 Jeżeli krok usuwania konta się nie powiedzie, Serwis ponawia go automatycznie, a potem
 zapisuje błąd w logu. Jeżeli usuwanie nie zakończy się w terminie 30 dni, Podmiot
 przetwarzający informuje o tym Administratora i kończy usuwanie bez zbędnej zwłoki.</li>
@@ -337,9 +340,15 @@ pozwalają na to bezwzględnie obowiązujące przepisy.</li>
 <ol>
 <li>Podmiot przetwarzający może zmienić Umowę, publikując jej nową wersję oznaczoną nowym
 numerem.</li>
-<li>Administrator akceptuje nową wersję w Serwisie, zaznaczając pole „Akceptuję umowę
-powierzenia w wersji {numer}”. Do czasu akceptacji Serwis nie pozwala na dalsze korzystanie
-z niego, z wyjątkiem eksportu danych i usunięcia konta.</li>
+<li>Administrator akceptuje nową wersję w Serwisie, zaznaczając pole „Akceptuję Regulamin
+w wersji {numer} i umowę powierzenia w wersji {numer}”. Administrator, który nie zaakceptował
+dotąd żadnej wersji, do czasu akceptacji może korzystać z Serwisu wyłącznie w zakresie
+eksportu danych i usunięcia konta. Administrator, który zaakceptował wcześniejszą wersję,
+od dnia, od którego wiąże go nowa wersja, do czasu jej akceptacji ma konto tylko do odczytu:
+może przeglądać i eksportować dane, usunąć konto, zmienić plan, wstrzymać automatyzację lub
+kampanię, usunąć kampanię lub kontakt i wstrzymać wysyłkę do kontaktu, ale nie może tworzyć
+ani zmieniać kampanii, list, tagów, szablonów i wysyłek. Uruchomione kampanie działają w tym
+czasie dalej, a Serwis nadal przetwarza w nich Dane.</li>
 <li>Akceptacja jest zapisywana wraz z czasem, skróconym adresem IP i identyfikatorem
 przeglądarki.</li>
 <li>Administrator, który nie akceptuje nowej wersji, może usunąć konto; stosuje się
@@ -390,13 +399,18 @@ ważności zgody.</li>
 <li>stan rozmowy i próby potwierdzenia, sposób weryfikacji, kluczowany skrót sześciocyfrowego
 kodu oraz skrót tokena strony zapisu; sam kod może występować w treści wiadomości;</li>
 <li>adres odbiorcy, identyfikatory i zdarzenia doręczenia, przyczyny odrzucenia i skargi;
-kliknięcia: link, kontakt, pierwszy i ostatni czas, liczba kliknięć;</li>
+liczniki kliknięć: link, dzień (UTC) i liczba kliknięć tego dnia, bez wskazania odbiorcy ani
+wysyłki; link w wiadomości zawiera wyłącznie identyfikator linku;</li>
 <li>treści kampanii, szablonów, wysyłek zbiorczych, wiadomości, linków, nazw list i tagów,
 stron zapisu i obrazów, w zakresie zawartych w nich danych osób, w tym nazwy użytkowników
 Instagram wpisane przez Administratora na listę pomijanych kont kampanii;</li>
 <li>identyfikatory kontaktów, rozmów, komentarzy, postów i wiadomości w logach zadań oraz
 identyfikatory kontaktów i rozmów w argumentach zadań w kolejce.
-Zapis zgody i zapis kliknięć nie zawierają adresu IP ani identyfikatora przeglądarki.
+Zapis zgody i liczniki kliknięć nie zawierają adresu IP ani identyfikatora przeglądarki.
+Przy kliknięciu w śledzony link Serwis używa adresu IP klikającego (adres IPv6 skrócony do
+/64) i identyfikatora przeglądarki wyłącznie w pamięci operacyjnej: adresu IP do limitu 120
+liczonych kliknięć na minutę z jednego adresu, a identyfikatora przeglądarki do pominięcia
+robotów; nie zapisuje ich w bazie ani w logach.
 Cloudflare widzi adresy IP, żądania, pełne ścieżki i dane przesyłane przez proxy, w tym
 formularze i ciasteczka sesji; § 8 i Lista podwykonawców opisują ten przepływ.</li>
 </ul>
@@ -413,13 +427,14 @@ utrzymanie i diagnostyka działania Serwisu.</p>
 <table>
 <tr><th>Zbiór</th><th>Okres</th></tr>
 <tr><td>Kontakty z adresem i pozostałe kontakty zachowywane według reguł poniżej</td><td>Do usunięcia kontaktu albo konta Administratora</td></tr>
-<tr><td>Kontakty bez adresu e-mail</td><td>90 dni od ostatniego komentarza lub wiadomości, jeżeli kontakt nigdy nie miał adresu i nie ma danych wymagających zachowania. Tag lub członkostwo w aktywnej liście zatrzymuje usunięcie. Dotyczy to też listy w 10-sekundowym okresie przywrócenia po usunięciu. Usunięcie wstrzymują również: adres lub potwierdzenie w rozmowie, oczekiwanie na kod, ważny niewykorzystany link zapisu, zapis zgody, doręczenie, blokada wysyłki, wpis odbiorcy wysyłki lub kliknięcie. Okres uwzględnia także późniejszą aktualizację kontaktu lub rozmowy. Po ustaniu przeszkód kontakt podlega ponownej ocenie; pozostałe kontakty pozostają do usunięcia kontaktu lub konta. Zadanie działa codziennie, partiami; blokady rekordów, zaległość lub trwające usuwanie konta mogą opóźnić wykonanie</td></tr>
+<tr><td>Kontakty bez adresu e-mail</td><td>90 dni od ostatniego komentarza lub wiadomości, jeżeli kontakt nigdy nie miał adresu i nie ma danych wymagających zachowania. Tag lub członkostwo w aktywnej liście zatrzymuje usunięcie. Dotyczy to też listy w 10-sekundowym okresie przywrócenia po usunięciu. Usunięcie wstrzymują również: adres lub potwierdzenie w rozmowie, oczekiwanie na kod, ważny niewykorzystany link zapisu, zapis zgody, doręczenie, blokada wysyłki lub wpis odbiorcy wysyłki. Okres uwzględnia także późniejszą aktualizację kontaktu lub rozmowy. Po ustaniu przeszkód kontakt podlega ponownej ocenie; pozostałe kontakty pozostają do usunięcia kontaktu lub konta. Zadanie działa codziennie, partiami; blokady rekordów, zaległość lub trwające usuwanie konta mogą opóźnić wykonanie</td></tr>
 <tr><td>Rozmowy zapisu i skróty kodów</td><td>Razem z kontaktem; historyczne rozmowy bez powiązanego kontaktu: 90 dni od aktualizacji</td></tr>
-<tr><td>Zapisy zgód, odbiorcy wysyłek, kliknięcia, przypisania do list i tagów</td><td>Razem z kontaktem</td></tr>
+<tr><td>Zapisy zgód, odbiorcy wysyłek, przypisania do list i tagów</td><td>Razem z kontaktem</td></tr>
+<tr><td>Liczniki kliknięć</td><td>Do usunięcia linku (także wraz z wysyłką zbiorczą, do której należy) albo konta Administratora. Nie wskazują odbiorcy ani wysyłki, więc usunięcie danych osoby ich nie obejmuje</td></tr>
 <tr><td>Tokeny stron zapisu</td><td>30 dni od wygaśnięcia, wcześniej razem z usuwaną rozmową</td></tr>
 <tr><td>Lista blokad wysyłki</td><td>Przez czas istnienia konta; po usunięciu danych osoby wpis pozostaje odłączony od kontaktu, z adresem znormalizowanym, przyczyną i datą, bez diagnostyki. Może pozostać także identyfikator wysyłki zbiorczej (broadcast_id), jeżeli jest zapisany; usunięcie kontaktu go nie czyści. Cel: zapobieganie ponownej wysyłce na adres, który zrezygnował, odrzucił wiadomość lub złożył skargę (art. 17 ust. 3 lit. b i art. 21 RODO). Usuwana z kontem</td></tr>
 <tr><td>Doręczenia wiadomości e-mail</td><td>90 dni od utworzenia, wcześniej przy usunięciu kontaktu lub konta</td></tr>
-<tr><td>Zdarzenia pocztowe</td><td>90 dni od otrzymania; po usunięciu konta do końca tego okresu, ponieważ nie mają klucza konta; odnalezione zdarzenia usuwa funkcja usunięcia danych osoby</td></tr>
+<tr><td>Zdarzenia pocztowe</td><td>90 dni od otrzymania, wcześniej przy usunięciu konta; zdarzenia nieprzypisane do konta (§ 12 ust. 2 pkt 1) pozostają po usunięciu konta do końca tego okresu; odnalezione zdarzenia usuwa funkcja usunięcia danych osoby</td></tr>
 <tr><td>Wykonania automatyzacji / odebrane webhooki</td><td>90 dni od oceny / otrzymania</td></tr>
 <tr><td>Zlecenia wysyłki wychodzącej, w tym teksty DM i odpowiedzi publicznych</td><td>30 dni od aktualizacji; przy usunięciu osoby uwzględnia się stan wysyłki, wiadomość już wysłana pozostaje do końca retencji</td></tr>
 <tr><td>Przetworzone zdarzenia</td><td>45 dni od pierwszego odebrania</td></tr>
@@ -469,8 +484,11 @@ tylko do odczytu i odebrane uprawnienia systemowe.</li>
 <li><strong>Dostęp.</strong> Dostęp operatorski jest ograniczony do upoważnionego operatora,
 przez Cloudflare Access z jednorazowym PIN i odrębną sesję aplikacji. SSH i administracja
 hostem korzystają z Tailscale.</li>
-<li><strong>Poczta wychodząca.</strong> Resend wysyła wiadomości z regionu eu-west-1
-z wymuszonym TLS; śledzenie otwarć i kliknięć w Resend jest wyłączone.</li>
+<li><strong>Poczta wychodząca.</strong> Resend wysyła wiadomości z regionu eu-west-1.
+Z domeny wspólnej Serwisu wysyła je z wymuszonym TLS; z własnej domeny wysyłkowej
+Administratora z TLS oportunistycznym, to jest szyfruje połączenie, gdy serwer odbiorcy to
+obsługuje, a w przeciwnym razie wysyła wiadomość bez szyfrowania. Śledzenie otwarć i kliknięć
+w Resend jest wyłączone.</li>
 <li><strong>Usługi zewnętrzne.</strong> Cloudflare zapewnia DNS, proxy, TLS, Tunnel, Access
 i cache publicznych obrazów. Serwis nie korzysta z zewnętrznej analityki, śledzenia błędów
 ani usługi gromadzenia logów aplikacji; nie wyłącza to własnych logów dostawców.</li>

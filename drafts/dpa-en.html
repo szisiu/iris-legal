@@ -82,11 +82,9 @@ account exists in the Service.</li>
 relationship based on the Terms ends. § 12 applies after it expires.</li>
 <li>Disconnecting Instagram, or removing IRIS in the Instagram settings, does not delete the
 IRIS account or end the Agreement. When Meta tells IRIS that the app was removed, IRIS marks
-the connection as disabled and stops sending messages from it and reading its comments. The
-encrypted access token then stays in the database until the account is disconnected in IRIS,
-a data deletion request arrives through Meta, or the IRIS account is deleted; each of these
-routes deletes the token (<a href="../data-deletion.html#en">Data deletion</a>, sections 2 to
-5). Contacts and campaigns remain; reconnecting allows service to resume.</li>
+the connection as disabled and stops sending messages from it and reading its comments. In
+the same operation IRIS deletes the encrypted access token of that connection from the
+database. Contacts and campaigns remain; reconnecting allows service to resume.</li>
 </ol>
 
 <h2>§ 4. Processing on documented instructions</h2>
@@ -190,9 +188,10 @@ laid down in Chapter III GDPR, in particular it:
 <ol>
 <li>provides an account data export in the Service within the scope described in § 12(1);</li>
 <li>on the Controller's instruction, erases a named person's data from linked contact,
-conversation, consent, delivery, click and automation records and from located webhooks and
+conversation, consent, delivery and automation records and from located webhooks and
 mail events; invalidates ready account exports. A suppression entry remains detached from
-the contact as described in Annex 1. The contact-erasure function does not cover the other
+the contact as described in Annex 1. Click counts name no recipient and no send, so they
+remain unchanged (Annex 1). The contact-erasure function does not cover the other
 places that can hold the person's data. For them these rules apply:
 <ol>
 <li>the Controller changes or deletes in the Service itself a username in campaign settings
@@ -241,9 +240,9 @@ by the Controller.</li>
 <h2>§ 12. Return and deletion of Data at the end</h2>
 <ol>
 <li>The Controller may at any time download an account export, including without accepting
-a new Agreement version. The ZIP contains nine data files: contacts, consent records,
-suppressions, audit events, campaigns, email templates, broadcasts, brand and billing,
-plus README.txt. It does not include separate data sets of capture conversations, deliveries,
+a new Agreement version. The ZIP contains ten data files: contacts, consent records,
+suppressions, audit events, campaigns, email templates, broadcasts, brand, billing and the
+content restrictions IRIS placed, plus README.txt. It does not include separate data sets of capture conversations, deliveries,
 broadcast recipients, clicks, automation executions, outbound intents, raw webhooks,
 mail events or image files. Before account deletion the Service prepares this export,
 available for 24 hours. The Controller chooses return of Data or deletion; after return,
@@ -257,16 +256,19 @@ require the Controller to download it.</li>
 purging account records. The Processor deletes Data from the database in that sequence,
 no later than 30 days after the Agreement expires, with these exceptions:
 <ol>
-<li>mail events without an account identifier remain until 90 days after receipt;</li>
+<li>mail events that the Service did not assign to an account remain until 90 days after
+receipt;</li>
 <li>the ready export remains available for 24 hours;</li>
 <li>account deletion proof remains for 12 months after completion; Meta deletion-request
 records remain for 12 months after receipt; a pending Meta request is not purged during handling;</li>
 <li>Data required by Union or Member State law is retained only to the extent and for
 the period required.</li>
 </ol>
-The mail events in point 1 hold the recipient's address and delivery data, but they have no
-account key, so account deletion does not find them today; the deletion job removes them when that
-period ends. This is a known limit of the Service and not a duty to keep the data. If a step of the account deletion fails, the Service repeats it automatically
+The Service deletes the account's other mail events in that sequence, and it does not store
+events that arrive later and name the deleted account. The mail events in point 1 hold the
+recipient's address and delivery data, but they have no account key, because the event does
+not name the account and no delivery record in the database assigns it; so account deletion
+does not find them, and the deletion job removes them when that period ends. This is a known limit of the Service and not a duty to keep the data. If a step of the account deletion fails, the Service repeats it automatically
 and then writes the error to the log. If the deletion does not finish within 30 days, the
 Processor tells the Controller and completes the deletion without undue delay.</li>
 <li>The suppression list is deleted with the account. The customer's own data, including
@@ -326,10 +328,16 @@ consumer, the limitations in paragraph 1 apply only as far as mandatory law allo
 <ol>
 <li>The Processor may change the Agreement by publishing a new version with a new version
 number.</li>
-<li>The Controller accepts a new version in the Service by ticking “Akceptuję umowę powierzenia
-w wersji {number}” (“I accept the data processing agreement, version {number}”). Until it is
-accepted, the Service allows no further use other than exporting data and deleting the
-account.</li>
+<li>The Controller accepts a new version in the Service by ticking “I accept the Terms of
+Service, version {number}, and the data processing agreement, version {number}” (in Polish:
+“Akceptuję Regulamin w wersji {numer} i umowę powierzenia w wersji {numer}”). A Controller
+that has not yet accepted any version can, until it accepts, use the Service only to export
+data and delete the account. A Controller that accepted an earlier version has a read-only
+account from the day the new version binds it until it accepts that version: it can view and
+export data, delete the account, change the plan, pause automation or a campaign, delete a
+campaign or a contact and stop sending to a contact, but it cannot create or change
+campaigns, lists, tags, templates or broadcasts. Campaigns that are running continue during
+that time, and the Service continues to process Data in them.</li>
 <li>Acceptance is recorded with the time, a truncated IP address and the browser's user
 agent.</li>
 <li>A Controller who does not accept a new version may delete the account; § 12
@@ -380,13 +388,18 @@ establish valid consent.</li>
 <li>conversation state, verification attempts and method, keyed digest of the six-digit
 code and hash of the capture-page token; the code itself may occur in message text;</li>
 <li>recipient address, delivery identifiers and events, bounce and complaint diagnostics;
-clicks: link, contact, first and last time, hit count;</li>
+click counts: link, day (UTC) and number of clicks that day, without naming the recipient or
+the send; the link in a message carries the link identifier alone;</li>
 <li>the content of campaigns, templates, broadcasts, messages, links, list and tag names,
 capture pages and images, to the extent it contains personal data, including Instagram
 usernames that the Controller puts on a campaign's list of ignored accounts;</li>
 <li>contact, conversation, comment, post and message identifiers in job logs, and contact
-and conversation identifiers in the arguments of queued jobs. Consent and
-click records contain neither IP addresses nor browser user agents. Cloudflare sees IP
+and conversation identifiers in the arguments of queued jobs. Consent records
+and click counts contain neither IP addresses nor browser user agents. When a person clicks a
+tracked link, the Service uses the person's IP address (an IPv6 address shortened to /64) and
+browser user agent in process memory only: the IP address for the limit of 120 counted clicks
+per minute from one address, and the user agent to leave out robots; it does not write them to
+the database or to logs. Cloudflare sees IP
 addresses, requests, full paths and data passing through the proxy, including forms and
 session cookies; § 8 and the Sub-processor List describe this flow.</li>
 </ul>
@@ -403,13 +416,14 @@ and operating and diagnosing the Service.</p>
 <table>
 <tr><th>Data set</th><th>Period</th></tr>
 <tr><td>Contacts with an address and other contacts retained under the rules below</td><td>Until contact or Controller account deletion</td></tr>
-<tr><td>Contacts without an email address</td><td>90 days from the last comment or message, if the contact never had an address and has no data requiring retention. A tag or membership of a live list prevents deletion, including a list within its 10-second restoration window after deletion. Other holds are: an address or verification in a conversation, awaiting a code, a valid unused capture link, consent, a delivery, suppression, broadcast-recipient record or click. The period also takes account of later contact or conversation updates. Eligibility is reassessed after a hold ends; other contacts remain until contact or account deletion. The job runs daily in batches; locked records, backlog or ongoing account deletion may delay execution</td></tr>
+<tr><td>Contacts without an email address</td><td>90 days from the last comment or message, if the contact never had an address and has no data requiring retention. A tag or membership of a live list prevents deletion, including a list within its 10-second restoration window after deletion. Other holds are: an address or verification in a conversation, awaiting a code, a valid unused capture link, consent, a delivery, suppression or broadcast-recipient record. The period also takes account of later contact or conversation updates. Eligibility is reassessed after a hold ends; other contacts remain until contact or account deletion. The job runs daily in batches; locked records, backlog or ongoing account deletion may delay execution</td></tr>
 <tr><td>Capture conversations and code digests</td><td>With the contact; historical conversations without a linked contact: 90 days after update</td></tr>
-<tr><td>Consent records, broadcast recipients, clicks, list and tag assignments</td><td>With the contact</td></tr>
+<tr><td>Consent records, broadcast recipients, list and tag assignments</td><td>With the contact</td></tr>
+<tr><td>Click counts</td><td>Until the link is deleted (also with the broadcast it belongs to) or the Controller's account is deleted. They name no recipient and no send, so person erasure does not cover them</td></tr>
 <tr><td>Capture-page tokens</td><td>30 days after expiry, or earlier with the deleted conversation</td></tr>
 <tr><td>Suppression list</td><td>While the account exists; on person erasure, the entry remains detached from the contact with normalized address, reason and date, without diagnostics. A broadcast identifier (broadcast_id) may also remain where recorded; contact erasure does not clear it. Purpose: preventing further sends to an address that unsubscribed, bounced or complained (Articles 17(3)(b) and 21 GDPR). Deleted with the account</td></tr>
 <tr><td>Email deliveries</td><td>90 days after creation, or earlier on contact or account deletion</td></tr>
-<tr><td>Mail events</td><td>90 days after receipt; after account deletion until that period ends because there is no account key; person erasure deletes events it locates</td></tr>
+<tr><td>Mail events</td><td>90 days after receipt, or earlier on account deletion; events not assigned to an account (§ 12(2) point 1) remain after account deletion until that period ends; person erasure deletes events it locates</td></tr>
 <tr><td>Automation executions / received webhooks</td><td>90 days after evaluation / receipt</td></tr>
 <tr><td>Outbound send requests, including DM and public-reply text</td><td>30 days after update; person erasure takes sending state into account, and an already sent message remains until retention ends</td></tr>
 <tr><td>Processed events</td><td>45 days after first receipt</td></tr>
