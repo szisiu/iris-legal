@@ -65,7 +65,7 @@ with a single-use link; it lasts until ended under § 9. An account in the trial
 <p>A plan is ordered on the IRIS order page, opened from the plans screen, and a block of
 extra captured people on the block purchase screen. Before the step to payment the screen
 shows the plan scope, the gross price, the net price and the billing period, or the number
-of people in the block, its price and its validity, the information on the right of
+of people in the block, its gross price and its validity, the information on the right of
 withdrawal (§ 11) and the box to request the start of the service before the withdrawal
 period ends. Ticking this box is a condition of the order. Then Stripe's payment page, in
 Polish for all Customers, shows the amount to pay. Its button „Płać i subskrybuj” (“Pay and
@@ -313,7 +313,8 @@ settings, available for each purchase for the whole withdrawal period. After a d
 the account settings the Operator sends an acknowledgement of receipt by email without delay.
 The Operator enters a declaration sent by email into IRIS without delay, with the same
 effects. The moment of withdrawal is the declaration in the account settings or the receipt
-of the email with the declaration.
+of the email with the declaration; the refund deadline and the state of the block count from
+it. For a declaration by email, access to the plan or block ends when it is entered in IRIS.
 The model withdrawal form in Annex 2 to the Polish Consumer Rights Act, which the Operator
 attaches to the order confirmation, or the form below can be used. No form is required.</p>
 <p>Suggested form: “I withdraw from the IRIS service contract concluded on [date]. Details
@@ -324,7 +325,8 @@ including for the days in which the Customer used the plan. The Operator deducts
 the time of use, also when it started the service before the withdrawal period ended at the
 Customer's request. The plan ends on withdrawal and the account goes read-only; the data
 stays until the Customer deletes the account. At the same moment IRIS ends the subscription
-in Stripe, with no proration, so Stripe takes no further payment.</p>
+in Stripe, with no proration, so Stripe takes no further payment. The Operator also refunds
+a payment taken after the moment of withdrawal.</p>
 <p>Block. At the Customer's request made with the order, the Operator starts the service of
 the block before the withdrawal period ends. The used part of a block is the people signed
 up from that block above the plan limit, counted as in § 5. When the Customer has several

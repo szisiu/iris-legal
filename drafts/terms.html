@@ -71,7 +71,7 @@ Konto w okresie próbnym jest bezpłatne.</p>
 <p>Plan zamawia się na stronie zamówienia w IRIS, otwieranej z ekranu planów, a blok
 dodatkowych zapisanych osób na ekranie zakupu bloku. Przed przejściem do płatności ekran
 pokazuje zakres planu, cenę brutto, cenę netto i okres rozliczeniowy albo liczbę osób
-w bloku, jego cenę i termin ważności, informację o prawie odstąpienia (§ 11) oraz pole
+w bloku, jego cenę brutto i termin ważności, informację o prawie odstąpienia (§ 11) oraz pole
 prośby o rozpoczęcie świadczenia przed upływem terminu odstąpienia. Zaznaczenie tego pola
 jest warunkiem zamówienia. Następnie strona płatności Stripe, po polsku dla wszystkich
 Klientów, pokazuje kwotę do zapłaty. Jej przycisk „Płać i subskrybuj” (plan) albo „Zapłać”
@@ -322,7 +322,9 @@ kontakt z § 1 albo funkcją „Odstąp od umowy tutaj” w ustawieniach konta, 
 zakupie przez cały termin odstąpienia. Po oświadczeniu złożonym w ustawieniach konta Operator
 niezwłocznie przesyła e-mailem potwierdzenie jego otrzymania. Oświadczenie przesłane e-mailem
 Operator niezwłocznie wpisuje do IRIS, z tymi samymi skutkami. Chwilą odstąpienia jest
-złożenie oświadczenia w ustawieniach konta albo otrzymanie e-maila z oświadczeniem. Można użyć wzoru formularza
+złożenie oświadczenia w ustawieniach konta albo otrzymanie e-maila z oświadczeniem; od niej
+liczy się termin zwrotu i stan bloku. Przy oświadczeniu e-mailem dostęp do planu lub bloku
+kończy się z chwilą wpisu do IRIS. Można użyć wzoru formularza
 z załącznika nr 2 do ustawy o prawach konsumenta, który Operator dołącza do potwierdzenia
 zamówienia, albo poniższego wzoru. Żaden wzór nie jest wymagany.</p>
 <p>Wzór do wykorzystania: „Oświadczam odstąpienie od umowy o usługę IRIS zawartej dnia
@@ -333,7 +335,8 @@ w których Klient korzystał z planu. Operator nie potrąca opłaty za okres kor
 gdy na prośbę Klienta zaczął świadczyć usługę przed upływem terminu odstąpienia. Plan kończy
 się z chwilą odstąpienia, a konto przechodzi w tryb tylko do odczytu; dane zostają, dopóki
 Klient nie usunie konta. W tej samej chwili IRIS kończy subskrypcję w Stripe, bez rozliczenia
-proporcjonalnego, więc Stripe nie pobiera kolejnej opłaty.</p>
+proporcjonalnego, więc Stripe nie pobiera kolejnej opłaty. Opłatę pobraną po chwili
+odstąpienia Operator także zwraca.</p>
 <p>Blok. Na prośbę Klienta złożoną przy zamówieniu Operator zaczyna świadczyć usługę z bloku
 przed upływem terminu odstąpienia. Wykorzystaną częścią bloku są osoby zapisane z tego bloku
 ponad limit planu, liczone jak w § 5. Gdy Klient ma w miesiącu kilka bloków, osoby
