@@ -66,8 +66,8 @@ oraz pola w nawiasach kwadratowych w każdym projekcie.
 | Pouczenie o odstąpieniu od umowy i wzór formularza | Ustawa o prawach konsumenta art. 12 ust. 1 pkt 9, załączniki 1 i 2 | Konsumenci | Nie napisano |
 | Potwierdzenie zawarcia umowy na trwałym nośniku | Ustawa o prawach konsumenta art. 21 | Konsumenci | Nie zbudowano |
 | Procedura reklamacyjna | UŚUDE art. 8 ust. 3 pkt 4 | Klienci | W Regulaminie, § 10 |
-| Polityka prywatności | RODO art. 13, 14 | Klienci, odwiedzający, zaproszeni | Projekt v3 |
-| Informacja o plikach cookie | PKE art. 399 | Odwiedzający | Projekt v3 |
+| Polityka prywatności | RODO art. 13, 14 | Klienci, odwiedzający, zaproszeni | Projekt v1 |
+| Informacja o plikach cookie | PKE art. 399 | Odwiedzający | Projekt v1 |
 | Umowa powierzenia przetwarzania danych i lista podmiotów przetwarzających (podprocesorów) | RODO art. 28 | Klienci | Projekt v1 |
 | Rejestr czynności przetwarzania | RODO art. 30 | Wewnętrzny | Projekt (`record-of-processing.md`) |
 | Rejestr naruszeń i procedura | RODO art. 33 ust. 5 | Wewnętrzny | Nie napisano |

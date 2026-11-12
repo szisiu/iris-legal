@@ -7,7 +7,7 @@
 - Data: 2026-11-09
 - Status: Projekt do przeglądu prawnego
 - Źródło faktów w tabelach: `internal/privacy/registry.go`
-- Inne źródła: `subprocessors.html` i `dpa-en.html` (Załącznik 1 i Załącznik 2) w wersji 1 oraz `privacy-en.html` w wersji 3, wszystkie w projekcie z 8 listopada 2026. Okresy zadań sprawdzono w `internal/jobs/` (`retention.go`, `identity_retention.go`).
+- Inne źródła: `subprocessors.html` i `dpa-en.html` (Załącznik 1 i Załącznik 2) w wersji 1 oraz `privacy-en.html` w wersji 1, wszystkie w projekcie z 8 listopada 2026. Okresy zadań sprawdzono w `internal/jobs/` (`retention.go`, `identity_retention.go`).
 - Uwaga: `registry_test.go` kończy się błędem, gdy migracja dodaje tabelę, której rejestr nie wymienia. Rejestr ma więc jeden wpis dla każdej tabeli. Część C wymienia każdy wpis.
 
 Jak czytać ten rejestr. Jedynymi źródłami są rejestr (registry) i projekty dokumentów prawnych. Jeżeli źródło nie podaje faktu, w tekście stoi `[DO SPRAWDZENIA: ...]`. Nie dodano żadnego okresu przechowywania, podstawy prawnej ani podmiotu podprzetwarzającego spoza tych plików.
