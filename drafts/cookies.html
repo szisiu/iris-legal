@@ -101,10 +101,12 @@ skryptów śledzących. IRIS nie ładuje zasobów z zewnętrznych serwerów: pol
 treści (CSP) dopuszcza obrazy, skrypty i style tylko z własnej domeny. Dostawcy mogą prowadzić
 logi serwerów.</p>
 <p>IRIS mierzy kliknięcia w linki w wiadomościach e-mail przez przekierowanie: link prowadzi
-najpierw na adres IRIS, który zapisuje kliknięcie przy kontakcie i przekierowuje dalej.
-Pomiar nie zapisuje niczego w urządzeniu odbiorcy. Rekord kliknięcia nie zawiera adresu IP ani
-rodzaju przeglądarki; IRIS odczytuje rodzaj przeglądarki tylko po to, aby nie liczyć kliknięć
-automatycznych skanerów. Śledzenie otwarć i kliknięć po stronie Resend jest wyłączone.
+najpierw na adres IRIS, który dodaje kliknięcie do dziennego licznika tego linku i przekierowuje
+dalej. Licznik nie wskazuje odbiorcy ani wysyłki. Pomiar nie zapisuje niczego w urządzeniu
+odbiorcy. Licznik nie zawiera adresu IP ani rodzaju przeglądarki. IRIS używa ich tylko
+w pamięci operacyjnej i nie zapisuje ich w bazie ani w logach: adresu IP (adres IPv6 skrócony
+do /64) do limitu 120 liczonych kliknięć na minutę, a rodzaju przeglądarki, aby nie liczyć
+kliknięć automatycznych skanerów. Śledzenie otwarć i kliknięć po stronie Resend jest wyłączone.
 Informację o pomiarze przekazuje odbiorcy twórca, w swojej informacji o przetwarzaniu danych.</p>
 
 <h2>5. Ustawienia i pytania</h2>
@@ -214,9 +216,12 @@ tracking scripts. IRIS loads no resources from outside servers: the content secu
 (CSP) allows images, fonts, scripts and styles only from its own domain. Providers may keep
 server logs.</p>
 <p>IRIS measures clicks on links in e-mails through a redirect: the link first goes to an IRIS
-address, which records the click against the contact and redirects onward. The measurement
-stores nothing on the recipient's device. The click record holds no IP address and no browser
-type; IRIS reads the browser type only so as not to count clicks of automatic scanners.
+address, which adds the click to the daily count of that link and redirects onward. The count
+names no recipient and no send. The measurement stores nothing on the recipient's device. The
+count holds no IP address and no browser type. IRIS uses them in process memory only and
+does not write them to the database or to logs: the IP address (an IPv6 address shortened to
+/64) for the limit of 120 counted clicks per minute, and the browser type so as not to count
+clicks of automatic scanners.
 Resend's own open and click tracking is disabled. The creator tells the recipient about the
 measurement in the creator's privacy notice.</p>
 

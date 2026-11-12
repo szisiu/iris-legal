@@ -52,7 +52,7 @@ można wnieść sprzeciw (część 9).</p>
 <tr><td>Zaproszenia bez konta: e-mail, język, notatka operatora, kto i kiedy dodaje zaproszenie, termin ważności i stan przyjęcia; dostęp do usługi</td><td>Lit. f, prowadzenie zaproszeń i kontrola dostępu do usługi</td><td>30 dni od utraty ważności: usunięcia lub wygaśnięcia niewykorzystanego zaproszenia. Bez terminu niewykorzystane zaproszenie wygasa po 180 dniach od dodania. Przyjęte zaproszenie nie wygasa tą drogą i jest usuwane z kontem; możliwe odrębne usunięcie na żądanie</td></tr>
 <tr><td>Akceptacja umowy powierzenia: wersja, czas, prefiks IP i identyfikator przeglądarki; dokumentacja zawarcia</td><td>Lit. c, udokumentowanie powierzenia zgodnie z art. 28 RODO; lit. f, dowód i obrona roszczeń</td><td>Do usunięcia konta</td></tr>
 <tr><td>Dziennik działań klienta: czas, identyfikatory, prefiks IP, przeglądarka, nazwy zmienionych pól i wartości nieosobowe; rozliczalność i bezpieczeństwo</td><td>Lit. f, wykrywanie nadużyć i ustalanie przebiegu działań</td><td>24 miesiące, wcześniej przy usunięciu konta</td></tr>
-<tr><td>Połączenie Instagram: identyfikatory, nazwa, typ konta, uprawnienia, zaszyfrowany token i jego ważność; obsługa połączenia</td><td>Lit. b, wykonanie zleconej integracji</td><td>Przez czas połączenia; tokeny są odnawiane, więc pierwotny termin nie wyznacza całej retencji. Odłączenie usuwa połączenie i token; usunięcie IRIS w ustawieniach Instagrama nie usuwa tokena (część 7)</td></tr>
+<tr><td>Połączenie Instagram: identyfikatory, nazwa, typ konta, uprawnienia, zaszyfrowany token i jego ważność; obsługa połączenia</td><td>Lit. b, wykonanie zleconej integracji</td><td>Przez czas połączenia; tokeny są odnawiane, więc pierwotny termin nie wyznacza całej retencji. Odłączenie usuwa połączenie i token; usunięcie IRIS w ustawieniach Instagrama także usuwa token, a połączenie zostaje oznaczone jako wyłączone (część 7)</td></tr>
 <tr><td>Rejestr usuniętych połączeń Instagram: identyfikator i daty; odnajdywanie późniejszych webhooków i bezpieczne zakończenie subskrypcji</td><td>Lit. f, bezpieczne zakończenie integracji i realizacja usuwania</td><td>90 dni od skutecznego wypisania webhooków, wcześniej z kontem lub ponownym połączeniem tego identyfikatora. Do skutecznego wypisania wpis pozostaje</td></tr>
 <tr><td>Dane nadawcy: nazwa, adres pocztowy, kontaktowy e-mail, domena wysyłkowa; identyfikacja nadawcy i konfiguracja poczty. Dane nadawcy są publikowane w stopkach i na stronach zapisu</td><td>Lit. b; lit. f dla danych przedstawiciela</td><td>Do usunięcia konta; przy zmianie domeny dane niezbędne do dokończenia jej usunięcia u dostawcy mogą pozostać</td></tr>
 <tr><td>Kampanie, szablony, obrazy, listy i ustawienia; realizacja usługi. Obrazy są publiczne, z rocznym nagłówkiem cache</td><td>Lit. b dla danych klienta; dane innych osób są powierzane przez klienta, część 4</td><td>Przez czas istnienia konta, z uwzględnieniem usunięcia danej treści tam, gdzie funkcja to umożliwia. Usunięcie kontaktu nie usuwa automatycznie obrazów i treści; cache opisuje część 7</td></tr>
@@ -75,7 +75,7 @@ usuwają dane partiami; przy dużej zaległości reszta przechodzi na kolejne dn
 Instagram przed podaniem adresu i przed zgodą marketingową. Obsługujemy komentarze, surowe
 webhooki z komentarzami i DM, odpowiedzi prywatne i publiczne, formularze zapisu, sześciocyfrowe
 kody i ich skróty, adresy e-mail, potwierdzenia, listy, tagi, zgody, wypisy, blokady wysyłki,
-zdarzenia doręczenia i kliknięcia w linki. Identyfikatory mogą występować także w logach zadań.</p>
+zdarzenia doręczenia i dzienne liczniki kliknięć w linki, które nie wskazują, kto kliknął. Identyfikatory mogą występować także w logach zadań.</p>
 <p>Instagram przesyła IRIS każdą prywatną wiadomość połączonego konta. IRIS zapisuje surową
 dostawę na 90 dni, ale działa tylko na wiadomościach w rozmowie rozpoczętej przez kampanię.
 Przynależność do listy IRIS zapisuje, gdy osoba poda adres, jeszcze przed jego
@@ -96,8 +96,9 @@ aktualnie wygenerowaną treść dla dostarczenia materiału bez zgody marketingo
 wyjątku i historycznych zapisów pozostaje otwarta w Umowie powierzenia.</p>
 <div class="table-wrap"><table>
 <tr><th>Dane powierzone</th><th>Retencja</th></tr>
-<tr><td>Kontakty z adresem, zgody, rozmowy, odbiorcy wysyłek, kliknięcia i powiązania list/tagów</td><td>Do usunięcia kontaktu lub konta klienta; historyczne rozmowy bez kontaktu 90 dni od aktualizacji</td></tr>
-<tr><td>Kontakty bez adresu</td><td>90 dni od ostatniego komentarza lub wiadomości, z uwzględnieniem późniejszych aktualizacji kontaktu lub rozmowy, jeżeli kontakt nigdy nie miał adresu i nic nie wymaga jego zachowania. Tag i aktywna lista zatrzymują usunięcie; także lista w 10-sekundowym okresie przywrócenia, adres lub weryfikacja w rozmowie, oczekiwanie na kod, ważny niewykorzystany link, zgoda, doręczenie, blokada wysyłki, odbiorca wysyłki lub kliknięcie. Po ustaniu przeszkód następuje ponowna ocena; zadanie codzienne, partiami, z możliwym opóźnieniem przez blokady, zaległość lub usuwanie konta</td></tr>
+<tr><td>Kontakty z adresem, zgody, rozmowy, odbiorcy wysyłek i powiązania list/tagów</td><td>Do usunięcia kontaktu lub konta klienta; historyczne rozmowy bez kontaktu 90 dni od aktualizacji</td></tr>
+<tr><td>Liczniki kliknięć: link, dzień (UTC) i liczba kliknięć tego dnia, bez wskazania odbiorcy ani wysyłki</td><td>Do usunięcia linku (także wraz z wysyłką zbiorczą, do której należy) albo konta klienta; usunięcie danych osoby ich nie obejmuje</td></tr>
+<tr><td>Kontakty bez adresu</td><td>90 dni od ostatniego komentarza lub wiadomości, z uwzględnieniem późniejszych aktualizacji kontaktu lub rozmowy, jeżeli kontakt nigdy nie miał adresu i nic nie wymaga jego zachowania. Tag i aktywna lista zatrzymują usunięcie; także lista w 10-sekundowym okresie przywrócenia, adres lub weryfikacja w rozmowie, oczekiwanie na kod, ważny niewykorzystany link, zgoda, doręczenie, blokada wysyłki lub odbiorca wysyłki. Po ustaniu przeszkód następuje ponowna ocena; zadanie codzienne, partiami, z możliwym opóźnieniem przez blokady, zaległość lub usuwanie konta</td></tr>
 <tr><td>Tokeny zapisu / zlecenia wysyłki / przetworzone zdarzenia</td><td>30 dni od wygaśnięcia / 30 dni od aktualizacji / 45 dni od pierwszego odbioru; szczegóły usuwania zależą od stanu zlecenia</td></tr>
 <tr><td>Surowe webhooki, wykonania automatyzacji, doręczenia i zdarzenia pocztowe</td><td>90 dni od odpowiednio otrzymania, oceny, utworzenia lub otrzymania; zdarzenia pocztowe bez klucza konta mogą pozostać po jego usunięciu do końca 90 dni od otrzymania</td></tr>
 <tr><td>Blokada wysyłki</td><td>Po usunięciu kontaktu pozostaje adres znormalizowany, przyczyna i data oraz, jeżeli jest zapisany, identyfikator wysyłki zbiorczej (broadcast_id), bez powiązania z kontaktem i diagnostyki, aby zapobiec dalszej wysyłce; wpis znika z kontem klienta</td></tr>
@@ -174,9 +175,11 @@ wymaganej podstawy przekazania ani zgody na marketing.</p>
 tego konta: otrzymane powiadomienia, kolejkę wiadomości, wykonania automatyzacji oraz historię
 wywołań Meta i stanów połączenia. Wstrzymuje też kampanie tego konta. Nie usuwa konta IRIS,
 kontaktów, rozmów, zgód, kampanii, szablonów ani rozliczeń.</p>
-<p><strong>Usunięcie IRIS w ustawieniach Instagrama nie usuwa dziś danych zapisanych
-w IRIS, także tokena.</strong> Meta zawiadamia wtedy IRIS, a IRIS oznacza konto jako wyłączone
-i przestaje z niego wysyłać oraz pobierać komentarze. Aby usunąć dane, klient odłącza konto
+<p><strong>Usunięcie IRIS w ustawieniach Instagrama usuwa token, ale nie usuwa pozostałych
+danych zapisanych w IRIS.</strong> Meta zawiadamia wtedy IRIS, a IRIS oznacza połączenie jako
+wyłączone i przestaje z niego wysyłać oraz pobierać komentarze. W tej samej operacji IRIS usuwa
+z bazy zaszyfrowany token dostępu tego połączenia. Kontakty i kampanie zostają; ponowne
+połączenie umożliwia wznowienie obsługi. Aby usunąć pozostałe dane, klient odłącza konto
 w IRIS, usuwa konto IRIS albo wysyła żądanie usunięcia danych przez Meta. Żądanie usunięcia
 przez Meta usuwa połączenie ze wskazanym kontem Instagram, token i zapisy techniczne, tak jak
 odłączenie; nie usuwa kontaktów, kampanii ani konta IRIS. Szczegóły podaje strona
@@ -207,17 +210,23 @@ według własnych zasad.</p>
 <p><a href="cookies.html">Informacja o cookies i pamięci przeglądarki</a> wymienia nazwy,
 cele i czasy. Zbadany kod aplikacji nie zawiera zewnętrznej analityki ani reklamowych skryptów
 śledzących. Nie oznacza to braku logów dostawców ani pomiaru kliknięć w wiadomościach.</p>
-<p>IRIS liczy kliknięcia w linki e-mail dla kontaktu: link, pierwszy i ostatni czas oraz
-liczbę kliknięć, bez IP i identyfikatora przeglądarki w rekordzie kliknięcia. Śledzenie otwarć
+<p>IRIS liczy kliknięcia w linki e-mail dla każdego linku i dnia (UTC): link, dzień i liczbę
+kliknięć tego dnia, bez wskazania odbiorcy ani wysyłki oraz bez IP i identyfikatora
+przeglądarki w liczniku. Śledzenie otwarć
 i kliknięć po stronie Resend jest wyłączone; przekierowania IRIS nadal zliczają kliknięcia.
 Dotyczy to linków w wysyłkach do kontaktów i w e-mailu z zamówionym materiałem. Link prowadzi
 najpierw pod adres IRIS ze ścieżką /r/, a IRIS od razu przekierowuje na adres docelowy. IRIS nie
 mierzy otwarć wiadomości. Nie liczy wejścia, które wygląda na automat (np. skaner poczty
-lub podgląd linku) ani wejścia w ciągu 3 sekund od wysyłki; przekierowanie działa zawsze.</p>
-<p>Link w wiadomości zawiera identyfikator wysyłki, więc IRIS przypisuje kliknięcie do
-kontaktu. Pomiar nie używa cookies. Dane kliknięć IRIS przetwarza
+lub podgląd linku), ani wejść ponad limit 120 liczonych kliknięć na minutę z jednego adresu IP;
+przekierowanie działa zawsze.</p>
+<p>Link w wiadomości zawiera wyłącznie identyfikator linku, więc IRIS nie przypisuje kliknięcia
+do kontaktu ani do wysyłki. Adresu IP klikającego (adres IPv6 skrócony do /64) i identyfikatora
+przeglądarki IRIS używa wyłącznie w pamięci operacyjnej: adresu IP do limitu liczonych kliknięć,
+a identyfikatora przeglądarki do pominięcia robotów. Nie zapisuje ich w bazie ani w logach.
+Pomiar nie używa cookies. Dane kliknięć IRIS przetwarza
 na polecenie twórcy, który jest ich administratorem i określa podstawę prawną (część 4).
-Kliknięcia usuwa się razem z kontaktem.</p>
+Liczniki kliknięć usuwa się razem z linkiem (także wraz z wysyłką zbiorczą, do której należy)
+albo z kontem klienta; usunięcie danych osoby ich nie obejmuje.</p>
 
 <h2>9. Prawa i kontakt</h2>
 <p>W granicach RODO można żądać dostępu, sprostowania, usunięcia, ograniczenia i przeniesienia

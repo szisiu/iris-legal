@@ -39,9 +39,11 @@ jego zakończeniu.</p>
 
 <h2>3. Usunięcie IRIS w ustawieniach Instagrama</h2>
 <p>Klient może usunąć IRIS w Instagramie: Ustawienia i aktywność, Aplikacje i witryny.
-Meta odbiera wtedy IRIS dostęp do konta i zawiadamia IRIS. IRIS oznacza konto jako
-wyłączone i przestaje z niego wysyłać oraz pobierać komentarze.</p>
-<p><strong>Samo to nie usuwa danych zapisanych w IRIS.</strong> Aby usunąć dane, klient
+Meta odbiera wtedy IRIS dostęp do konta i zawiadamia IRIS. IRIS oznacza połączenie jako
+wyłączone i przestaje z niego wysyłać oraz pobierać komentarze. W tej samej operacji IRIS
+usuwa ze swojej bazy zaszyfrowany token dostępu tego połączenia.</p>
+<p><strong>Poza tokenem nie usuwa to danych zapisanych w IRIS.</strong> Kontakty i kampanie
+zostają; ponowne połączenie umożliwia wznowienie obsługi. Aby usunąć pozostałe dane, klient
 odłącza konto w IRIS (punkt 2), usuwa konto IRIS (punkt 5) albo wysyła żądanie usunięcia
 danych przez Meta (punkt 4).</p>
 
@@ -78,8 +80,8 @@ przez okres wymagany przepisami podatkowymi i rachunkowymi, co do zasady 5 lat o
 roku podatkowego;</li>
 <li>zapis, że konto usunięto, przez 12 miesięcy;</li>
 <li>zapisy działań operatora przez 24 miesiące;</li>
-<li>zdarzenia wysłanych wiadomości e-mail (doręczenie, odrzucenie, skarga) z adresem
-odbiorcy, do 90 dni od zdarzenia;</li>
+<li>zdarzenia wysłanych wiadomości e-mail (doręczenie, odrzucenie, skarga), których nie
+przypisano do konta, z adresem odbiorcy, do 90 dni od ich otrzymania;</li>
 <li>kopie publicznych obrazów w pamięci podręcznej przeglądarek i serwerów pośrednich,
 do roku, poza kontrolą IRIS;</li>
 <li>skrót (SHA-256) nazwy nadawcy, bezterminowo, aby nikt inny nie przejął tej nazwy
@@ -103,12 +105,13 @@ Odpowiadamy zwykle w ciągu 2 dni roboczych, a najpóźniej w ciągu miesiąca o
 żądania.</li>
 </ul>
 <p>Usunięcie osoby obejmuje: kontakt, zapisy zgód, rozmowy, wysłane wiadomości i ich
-zdarzenia, kliknięcia, przynależność do list oraz otrzymane powiadomienia z jej nazwą lub
+zdarzenia, przynależność do list oraz otrzymane powiadomienia z jej nazwą lub
 adresem. Jeżeli adres miał już blokadę (po wypisie, odrzuceniu lub skardze), blokada
 zostaje (adres, powód i data), aby na ten adres nie trafiła kolejna wiadomość (art. 17
 ust. 3 lit. b i art. 21 RODO). Samo usunięcie nie zakłada nowej blokady: kto nie chce
 dostawać wiadomości, wypisuje się przed usunięciem. Zostaje też wpis w dzienniku zdarzeń
-z samymi liczbami.</p>
+z samymi liczbami. Zostają także dzienne liczniki kliknięć w linki: nie wskazują odbiorcy ani
+wysyłki, więc usunięcie osoby ich nie obejmuje.</p>
 
 <h2>7. Dane usuwane automatycznie</h2>
 <div class="table-wrap"><table>
@@ -168,9 +171,11 @@ than 7 days after the job ends.</p>
 
 <h2>3. Removing IRIS in the Instagram settings</h2>
 <p>The customer can remove IRIS in Instagram: Settings and activity, Apps and websites.
-Meta then takes away IRIS's access to the account and tells IRIS. IRIS marks the account
-as disabled and stops sending from it and reading its comments.</p>
-<p><strong>This alone does not delete the data stored in IRIS.</strong> To delete data, the
+Meta then takes away IRIS's access to the account and tells IRIS. IRIS marks the connection
+as disabled and stops sending from it and reading its comments. In the same operation IRIS
+deletes the encrypted access token of that connection from its database.</p>
+<p><strong>Apart from the token, this does not delete the data stored in IRIS.</strong>
+Contacts and campaigns remain; reconnecting allows service to resume. To delete the other data, the
 customer disconnects the account in IRIS (section 2), deletes the IRIS account (section 5)
 or sends a data deletion request through Meta (section 4).</p>
 
@@ -209,8 +214,8 @@ for the period that tax and accounting law requires, as a rule 5 years from the 
 tax year;</li>
 <li>a record that the account was deleted, for 12 months;</li>
 <li>records of operator actions, for 24 months;</li>
-<li>the events of sent e-mails (delivery, bounce, complaint) with the recipient's
-address, for up to 90 days after the event;</li>
+<li>the events of sent e-mails (delivery, bounce, complaint) that were not assigned to
+an account, with the recipient's address, for up to 90 days after receipt;</li>
 <li>copies of public images in the caches of browsers and intermediate servers, for up
 to a year, outside IRIS's control;</li>
 <li>a hash (SHA-256) of the sender name, with no time limit, so that nobody else can take
@@ -234,12 +239,13 @@ We usually answer in 2 working days, and not later than one month after we recei
 request.</li>
 </ul>
 <p>Deleting a person covers: the contact, the consent records, conversations, sent messages
-and their events, clicks, list memberships, and the received notifications that hold the
+and their events, list memberships, and the received notifications that hold the
 person's username or address. If the address already had a block (after an unsubscribe,
 a bounce or a complaint), the block stays (address, reason and date), so that no further
 message goes to that address (art. 17(3)(b) and art. 21 GDPR). Deletion alone sets no new
 block: a person who wants no more messages unsubscribes before the deletion. An event log
-entry that holds only counts also stays.</p>
+entry that holds only counts also stays. The daily counts of link clicks stay too: they name
+no recipient and no send, so the deletion of a person does not cover them.</p>
 
 <h2>7. Data deleted automatically</h2>
 <div class="table-wrap"><table>

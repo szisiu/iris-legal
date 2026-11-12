@@ -49,7 +49,7 @@ Tax Ordinance (invoices and tax records). You may object to processing based on 
 <tr><td>Invitations without an account: email, language, operator note, who adds the invitation and when, expiry and acceptance state; access to the service</td><td>f, managing invitations and access to the service</td><td>30 days after lapse: removal or expiry of an unused invitation. An unused invitation without expiry lapses 180 days after addition. Joined invitations do not lapse this way and are deleted with the account; separate erasure on request is possible</td></tr>
 <tr><td>DPA acceptance: version, time, IP prefix and user agent; documenting conclusion</td><td>c, documenting processing under Article 28 GDPR; f, evidence and defence of claims</td><td>Until account deletion</td></tr>
 <tr><td>Customer audit: time, identifiers, IP prefix, browser, changed field names and non-personal values; accountability and security</td><td>f, abuse detection and establishing actions</td><td>24 months, or earlier on account deletion</td></tr>
-<tr><td>Instagram connection: identifiers, username, type, permissions, encrypted token and expiry; integration</td><td>b, performing the requested integration</td><td>While connected; tokens are refreshed so initial expiry does not define total retention. Disconnecting removes the connection and the token; removing IRIS in the Instagram settings does not delete the token (section 7)</td></tr>
+<tr><td>Instagram connection: identifiers, username, type, permissions, encrypted token and expiry; integration</td><td>b, performing the requested integration</td><td>While connected; tokens are refreshed so initial expiry does not define total retention. Disconnecting removes the connection and the token; removing IRIS in the Instagram settings also deletes the token, and the connection is marked as disabled (section 7)</td></tr>
 <tr><td>Removed Instagram connections: identifier and dates; locating later webhooks and safely ending subscriptions</td><td>f, safe disconnection and erasure handling</td><td>90 days after successful webhook unsubscribe, or earlier with account deletion or reconnection of that identifier. Remains until unsubscribe succeeds</td></tr>
 <tr><td>Sender identity: name, postal and contact email addresses, sending domain; identifying the sender and configuring mail. Sender details appear in footers and capture pages</td><td>b; f for representative details</td><td>Until account deletion; on domain changes, data needed to finish provider-side domain removal may remain</td></tr>
 <tr><td>Campaigns, templates, images, lists and settings; service provision. Images are public with a one-year cache header</td><td>b for customer data; other people's data is entrusted by the customer, section 4</td><td>While the account exists, subject to content deletion where the feature supports it. Contact erasure does not automatically remove images/content; caching is covered in section 7</td></tr>
@@ -72,7 +72,7 @@ delete in batches; with a large backlog, the rest moves to the next days.</p>
 before an email address or marketing consent exists. We handle comments, raw webhooks with
 comments/DMs, private/public replies, capture forms, six-digit codes and digests, email
 addresses, confirmations, lists, tags, consent, unsubscribes, suppressions, delivery events
-and link clicks. Identifiers can also appear in job logs.</p>
+and daily link-click counts that do not say who clicked. Identifiers can also appear in job logs.</p>
 <p>Instagram sends IRIS every private message of the connected account. IRIS stores the raw
 delivery for 90 days, but acts only on messages in a conversation that a campaign started.
 IRIS records list membership when a person gives the address, before the address is
@@ -92,8 +92,9 @@ rendered at capture for delivery, without marketing consent. Assessment of this 
 and historical records remains open in the DPA.</p>
 <div class="table-wrap"><table>
 <tr><th>Entrusted data</th><th>Retention</th></tr>
-<tr><td>Addressed contacts, consent, conversations, broadcast recipients, clicks, list/tag links</td><td>Until contact or customer account deletion; historical conversations without a contact: 90 days after update</td></tr>
-<tr><td>Addressless contacts</td><td>90 days from the last comment or message, taking later contact/conversation updates into account, if the contact never had an address and nothing requires retention. A tag or live list prevents deletion, as does a list in its 10-second restoration window, an address/verification in a conversation, awaiting a code, valid unused capture link, consent, delivery, suppression, broadcast recipient or click. Eligibility is reassessed after holds end; daily batch job, with possible delays from locks, backlog or account deletion</td></tr>
+<tr><td>Addressed contacts, consent, conversations, broadcast recipients, list/tag links</td><td>Until contact or customer account deletion; historical conversations without a contact: 90 days after update</td></tr>
+<tr><td>Click counts: link, day (UTC) and number of clicks that day, without naming the recipient or the send</td><td>Until the link is deleted (also with the broadcast it belongs to) or the customer account is deleted; person erasure does not cover them</td></tr>
+<tr><td>Addressless contacts</td><td>90 days from the last comment or message, taking later contact/conversation updates into account, if the contact never had an address and nothing requires retention. A tag or live list prevents deletion, as does a list in its 10-second restoration window, an address/verification in a conversation, awaiting a code, valid unused capture link, consent, delivery, suppression or broadcast recipient. Eligibility is reassessed after holds end; daily batch job, with possible delays from locks, backlog or account deletion</td></tr>
 <tr><td>Capture tokens / outbound intents / processed events</td><td>30 days after expiry / 30 days after update / 45 days after first receipt; erasure details depend on intent state</td></tr>
 <tr><td>Raw webhooks, automation executions, deliveries and mail events</td><td>90 days after receipt, evaluation, creation or receipt respectively; mail events without an account key may remain after deletion until 90 days from receipt</td></tr>
 <tr><td>Suppression</td><td>After contact erasure the normalized address, reason and date remain, plus a broadcast identifier (broadcast_id) where recorded, detached from the contact and without diagnostics, to prevent further sends; removed with the customer's account</td></tr>
@@ -171,9 +172,11 @@ and the technical records of that account: received notifications, the message q
 automation executions, and the history of Meta calls and connection states. It also pauses
 the campaigns of that account. It does not delete the IRIS account, contacts, conversations,
 consents, campaigns, templates or billing.</p>
-<p><strong>Removing IRIS in the Instagram settings does not delete data stored in IRIS
-today, the token included.</strong> Meta then tells IRIS, and IRIS marks the account as
-disabled and stops sending from it and reading its comments. To delete data, the customer
+<p><strong>Removing IRIS in the Instagram settings deletes the token, but not the other
+data stored in IRIS.</strong> Meta then tells IRIS, and IRIS marks the connection as
+disabled and stops sending from it and reading its comments. In the same operation IRIS
+deletes the encrypted access token of that connection from the database. Contacts and
+campaigns remain; reconnecting allows service to resume. To delete the other data, the customer
 disconnects the account in IRIS, deletes the IRIS account or sends a data deletion request
 through Meta. A deletion request through Meta deletes the connection to the named Instagram
 account, the token and the technical records, as a disconnection does; it does not delete
@@ -206,17 +209,21 @@ in their own systems under their own rules.</p>
 <p>The <a href="cookies.html#en">cookie and browser-storage notice</a> lists names, purposes
 and periods. The reviewed application code contains no external analytics or advertising
 tracking scripts. This does not exclude provider logs or email click measurement.</p>
-<p>IRIS counts email-link clicks per contact: link, first/last time and hit count, without IP
-or user agent in the click record. Resend open/click tracking is disabled; IRIS redirects
+<p>IRIS counts email-link clicks per link and per UTC day: link, day and number of clicks that
+day, without naming the recipient or the send, and without IP or user agent in the count. Resend open/click tracking is disabled; IRIS redirects
 still count clicks. This applies to the links in broadcasts to contacts and in the email with
 the requested resource. The link goes first to an IRIS address with the path /r/, and IRIS
 redirects at once to the target address. IRIS does not measure email opens. It does not count
-a visit that looks automated (for example a mail scanner or a link preview), or a visit
-within 3 seconds after the send; the redirect always works.</p>
-<p>The link in a message holds an identifier of the send, so IRIS assigns the click to the
-contact. The measurement uses no cookies. IRIS
+a visit that looks automated (for example a mail scanner or a link preview), or visits past
+the limit of 120 counted clicks per minute from one IP address; the redirect always works.</p>
+<p>The link in a message carries the link identifier alone, so IRIS does not assign the click
+to a contact or a send. IRIS uses the clicker's IP address (an IPv6 address shortened to /64)
+and browser user agent in process memory only: the IP address for the limit of counted clicks,
+and the user agent to leave out robots. It does not write them to the database or to logs.
+The measurement uses no cookies. IRIS
 processes click data on the instructions of the creator, who is its controller and decides
-the legal basis (section 4). Clicks are deleted with the contact.</p>
+the legal basis (section 4). Click counts are deleted with the link (also with the broadcast
+it belongs to) or with the customer account; person erasure does not cover them.</p>
 
 <h2>9. Rights and contact</h2>
 <p>Subject to GDPR conditions, you may request access, rectification, erasure, restriction

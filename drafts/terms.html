@@ -195,9 +195,9 @@ blokady ani odwołania od decyzji Meta. Awarie, zmiany API, filtrowanie komentar
 ograniczenie konta mogą zatrzymać odpowiedzi. Operator odpowiada za własne obowiązki
 z należytą starannością; samo wskazanie dostawcy nie wyłącza jego odpowiedzialności.</p>
 <p>Gdy Klient usunie IRIS w ustawieniach Instagrama, Meta odbiera IRIS dostęp i zawiadamia
-IRIS. IRIS oznacza wtedy konto jako wyłączone i przestaje z niego wysyłać oraz pobierać
-komentarze. Samo to nie usuwa danych: zapisany token, kontakty i kampanie zostają do
-ponownego połączenia albo do usunięcia przez Klienta. Odłączenie konta w IRIS usuwa
+IRIS. IRIS oznacza wtedy połączenie jako wyłączone i przestaje z niego wysyłać oraz pobierać
+komentarze. W tej samej operacji IRIS usuwa zaszyfrowany token dostępu tego połączenia.
+Kontakty i kampanie zostają do ponownego połączenia albo do usunięcia przez Klienta. Odłączenie konta w IRIS usuwa
 połączenie, token i zapisy techniczne tego konta oraz wstrzymuje jego kampanie; kontakty,
 rozmowy i kampanie zostają, a konto IRIS trwa dalej. Żądanie usunięcia danych przez Meta
 działa jak odłączenie wskazanego konta. Szczegóły podaje strona
@@ -257,10 +257,11 @@ na kontakt z § 1; Operator potwierdza je e-mailem i usuwa konto w sposób opisa
 Gdy umowa kończy się z przyczyny innej niż naruszenie ze strony Klienta, stosuje się zwrot
 z § 5 ust. 7.</p>
 <p>Przed usunięciem konta przygotowywany jest eksport kontaktów, zgód, blokad wysyłki,
-dziennika audytowego, kampanii, szablonów e-mail, wysyłek zbiorczych, danych marki
-i rozliczeń, dostępny przez 24 godziny. Nie obejmuje wszystkich zbiorów opisanych w DPA.
+dziennika audytowego, kampanii, szablonów e-mail, wysyłek zbiorczych, danych marki,
+rozliczeń i ograniczeń treści nałożonych przez IRIS, dostępny przez 24 godziny. Nie obejmuje wszystkich zbiorów opisanych w DPA.
 Nie trzeba go pobrać, aby usunięcie było kontynuowane. Dane są usuwane według § 12 DPA,
-z terminem 30 dni i opisanymi wyjątkami: zdarzenia pocztowe do 90 dni od odbioru, eksport
+z terminem 30 dni i opisanymi wyjątkami: zdarzenia pocztowe nieprzypisane do konta do 90 dni
+od odbioru, eksport
 24 godziny i potwierdzenia 12 miesięcy; dane rozliczeń wymagane prawem mogą pozostać.
 Blokady wysyłki znikają z kontem. Dane, które zostają po usunięciu, także u Stripe
 i w pamięci podręcznej publicznych obrazów, wymienia strona
@@ -341,10 +342,11 @@ opisuje strona <a href="../report.html">Zgłoszenia i punkt kontaktowy</a>.</p>
 
 <h2>§ 13. Eksport i zmiana dostawcy</h2>
 <p>Eksport konta obejmuje udostępniane dane kontaktów i zgód, blokad, dziennika działań,
-marki, kampanii, szablonów, wysyłek i rozliczeń w plikach CSV lub JSON w archiwum ZIP.
-Jest dostępny w panelu; gotowy plik trwa 24 godziny. Zawiera dziewięć plików danych
-oraz README.txt; pomija zbiory wymienione w § 12 ust. 1 DPA, w tym rozmowy, doręczenia,
-odbiorców wysyłek, kliknięcia, automatyzacje, zlecenia, surowe webhooki, zdarzenia pocztowe
+marki (z ostatnio potwierdzoną treścią informacji dla subskrybentów), kampanii, szablonów,
+wysyłek, rozliczeń i ograniczeń treści nałożonych przez IRIS w plikach CSV lub JSON
+w archiwum ZIP. Jest dostępny w panelu; gotowy plik trwa 24 godziny. Zawiera dziesięć plików
+danych oraz README.txt; pomija zbiory wymienione w § 12 ust. 1 DPA, w tym rozmowy, doręczenia,
+odbiorców wysyłek, liczniki kliknięć, automatyzacje, zlecenia, surowe webhooki, zdarzenia pocztowe
 i pliki obrazów. Nie jest to obietnica automatycznego
 odtworzenia kampanii w innym systemie ani przeniesienia uprawnień i tokenów Meta.</p>
 <p>Klient może w każdej chwili zażądać zmiany dostawcy na innego dostawcę albo przeniesienia
@@ -401,7 +403,9 @@ lub późniejszego poinformowania o niej, chyba że może zachować usługę bez
 opłaty na zasadach ustawowych. Inne prawa dotyczące zgodności pozostają zachowane.</p>
 <p>Informację o zmianie Operator wysyła e-mailem na adres, którym Klient się loguje. Gdy
 Klient nie wypowie umowy przed dniem wejścia zmiany, wiąże go zmieniony Regulamin
-(art. 384<sup>1</sup> Kodeksu cywilnego). Klient, który wypowie umowę z powodu zmiany,
+(art. 384<sup>1</sup> Kodeksu cywilnego). Od tego dnia do akceptacji nowej wersji w Serwisie
+(pole „Akceptuję Regulamin w wersji {numer} i umowę powierzenia w wersji {numer}”) konto
+Klienta działa w trybie tylko do odczytu, a uruchomione kampanie działają dalej. Klient, który wypowie umowę z powodu zmiany,
 dostaje zwrot z § 5 ust. 7. Zmiany wyłącznie na korzyść Klienta i zmiany redakcyjne mogą
 wejść w życie bez wyprzedzenia. Każda wersja Regulaminu ma numer i datę; poprzednie wersje
 Operator przesyła na prośbę.</p>

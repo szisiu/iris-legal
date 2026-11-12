@@ -188,9 +188,10 @@ restriction or an appeal of Meta decisions. Outages, API changes, filtered comme
 account restrictions may stop replies. The Operator remains responsible for its own duties
 with due care; naming a vendor does not itself exclude liability.</p>
 <p>When the Customer removes IRIS in the Instagram settings, Meta takes away IRIS's access
-and tells IRIS. IRIS then marks the account as disabled and stops sending from it and
-reading its comments. This alone deletes no data: the stored token, the contacts and the
-campaigns stay until reconnection or until the Customer deletes them. Disconnecting the
+and tells IRIS. IRIS then marks the connection as disabled and stops sending from it and
+reading its comments. In the same operation IRIS deletes the encrypted access token of that
+connection. The contacts and the campaigns stay until reconnection or until the Customer
+deletes them. Disconnecting the
 account in IRIS deletes the connection, the token and the technical records of that account
 and pauses its campaigns; contacts, conversations and campaigns stay, and the IRIS account
 continues. A data deletion request through Meta works as a disconnection of the named
@@ -248,9 +249,10 @@ from the sign-in address to the § 1 contact; the Operator confirms it by email 
 the account as described below. When the contract ends for a reason other than a breach by
 the Customer, the refund in § 5(7) applies.</p>
 <p>An export of contacts, consent, suppressions, audit, campaigns, email templates,
-broadcasts, brand and billing is prepared before account deletion and available for 24 hours.
+broadcasts, brand, billing and the content restrictions IRIS placed is prepared before account deletion and available for 24 hours.
 It does not include every data set described in the DPA. Downloading is not required for deletion to continue. DPA § 12 governs deletion, with a
-30-day period and stated exceptions: mail events up to 90 days after receipt, export
+30-day period and stated exceptions: mail events not assigned to an account up to 90 days
+after receipt, export
 24 hours and proof 12 months; billing data required by law may remain. Suppressions are
 removed with the account. The <a href="../data-deletion.html#en">Data deletion</a> page,
 section 5, lists the data that stays after deletion, at Stripe and in the caches of public
@@ -328,11 +330,12 @@ the Digital Services Coordinator (in Poland the President of the Office of Elect
 Communications) and notices to authorities.</p>
 
 <h2>§ 13. Export and switching providers</h2>
-<p>Account export includes available contacts/consent, suppressions, audit, brand, campaigns,
-templates, broadcasts and billing in CSV/JSON files within ZIP. The panel provides export;
-a ready file lasts 24 hours. It contains nine data files plus README.txt and omits
+<p>Account export includes available contacts/consent, suppressions, audit, brand (with the
+last confirmed text of the subscriber notice), campaigns, templates, broadcasts, billing and
+the content restrictions IRIS placed in CSV/JSON files within ZIP. The panel provides export;
+a ready file lasts 24 hours. It contains ten data files plus README.txt and omits
 the sets listed in DPA § 12(1), including conversations, deliveries, broadcast recipients,
-clicks, automation executions, intents, raw webhooks, mail events and image files. This does not promise automatic campaign recreation elsewhere
+click counts, automation executions, intents, raw webhooks, mail events and image files. This does not promise automatic campaign recreation elsewhere
 or transfer of Meta permissions/tokens.</p>
 <p>The Customer can at any time ask to switch to another provider or to move the data to its
 own infrastructure, using § 1. The Operator applies the rules below to every Customer, at
@@ -386,7 +389,10 @@ service remains available without extra charge under statutory conditions. Other
 rights remain.</p>
 <p>The Operator sends the notice of a change by email to the address the Customer signs in
 with. When the Customer does not terminate before the day the change takes effect, the
-changed Terms bind the Customer (Article 384<sup>1</sup> of the Polish Civil Code). A
+changed Terms bind the Customer (Article 384<sup>1</sup> of the Polish Civil Code). From that day until the Customer accepts
+the new version in the Service (the box “I accept the Terms of Service, version {number}, and
+the data processing agreement, version {number}”), the account is read-only, and campaigns
+that are running continue. A
 Customer who terminates because of a change gets the refund in § 5(7). Changes only in the
 Customer's favor and editorial changes can take effect without advance notice. Each version
 of the Terms has a number and a date; the Operator sends earlier versions on request.</p>
