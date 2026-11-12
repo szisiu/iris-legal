@@ -5,7 +5,7 @@
 - Date: 2026-11-09
 - Status: Draft for legal review
 - Source of the table facts: `internal/privacy/registry.go`
-- Other sources: `subprocessors.html`, `privacy-en.html` and `dpa-en.html` (Annex 1 and Annex 2), all in version 3 draft of 8 November 2026. Job periods were checked in `internal/jobs/` (`retention.go`, `identity_retention.go`).
+- Other sources: `subprocessors.html` and `dpa-en.html` (Annex 1 and Annex 2) in version 1 and `privacy-en.html` in version 3, all drafts of 8 November 2026. Job periods were checked in `internal/jobs/` (`retention.go`, `identity_retention.go`).
 - Note: `registry_test.go` fails when a migration adds a table that the registry does not name. So the registry has one entry for every table. Part C lists every entry.
 
 How to read this record. The registry and the legal drafts are the only sources. Where a source does not state a fact, the text says `[TO BE VERIFIED: ...]`. No retention period, legal ground or sub-processor was added from outside these files.

@@ -56,14 +56,14 @@ bracketed slots inside each draft.
 
 | Document | Required by | For whom | State |
 |---|---|---|---|
-| Regulamin | UŚUDE art. 8; Consumer Rights Act art. 12 | Customers | Draft v3 |
+| Regulamin | UŚUDE art. 8; Consumer Rights Act art. 12 | Customers | Draft v1 |
 | Pre-contract information and order summary | Consumer Rights Act art. 12, 17 | Consumers | Not built (Part 3) |
 | Withdrawal notice and model form | Consumer Rights Act art. 12(1)(9), annexes 1 and 2 | Consumers | Not written |
 | Confirmation of the contract on a durable medium | Consumer Rights Act art. 21 | Consumers | Not built |
 | Complaints procedure | UŚUDE art. 8(3)(4) | Customers | Inside the Regulamin, § 10 |
 | Privacy policy | GDPR art. 13, 14 | Customers, visitors, invitees | Draft v3 |
 | Cookie notice | PKE art. 399 | Visitors | Draft v3 |
-| Data processing agreement and sub-processor list | GDPR art. 28 | Customers | Draft v3 |
+| Data processing agreement and sub-processor list | GDPR art. 28 | Customers | Draft v1 |
 | Record of processing | GDPR art. 30 | Internal | Draft (`record-of-processing.md`) |
 | Breach register and procedure | GDPR art. 33(5) | Internal | Not written |
 | Transfer assessments for non-EEA sub-processors | GDPR art. 44 to 46 | Internal | Not written |
