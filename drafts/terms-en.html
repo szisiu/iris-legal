@@ -312,7 +312,7 @@ to § 1's contact, or with the “Withdraw from the contract here” function in
 settings, available for each purchase for the whole withdrawal period. After a declaration in
 the account settings the Operator sends an acknowledgement of receipt by email without delay.
 The Operator enters a declaration sent by email into IRIS without delay, with the same
-effects. The moment of withdrawal is the declaration in the account settings or the receipt
+effects, and after the entry sends the same acknowledgement of receipt. The moment of withdrawal is the declaration in the account settings or the receipt
 of the email with the declaration; the refund deadline and the state of the block count from
 it. For a declaration by email, access to the plan or block ends when it is entered in IRIS.
 The model withdrawal form in Annex 2 to the Polish Consumer Rights Act, which the Operator
@@ -326,7 +326,9 @@ the time of use, also when it started the service before the withdrawal period e
 Customer's request. The plan ends on withdrawal and the account goes read-only; the data
 stays until the Customer deletes the account. At the same moment IRIS ends the subscription
 in Stripe, with no proration, so Stripe takes no further payment. The Operator also refunds
-a payment taken after the moment of withdrawal.</p>
+a payment taken after the moment of withdrawal. A credit to the Customer from a plan or
+period change in the Stripe portal (§ 5) does not pass to a later plan: IRIS sets it to zero
+when it ends the subscription, because the refund covers the full amount paid.</p>
 <p>Block. At the Customer's request made with the order, the Operator starts the service of
 the block before the withdrawal period ends. The used part of a block is the people signed
 up from that block above the plan limit, counted as in § 5. When the Customer has several
